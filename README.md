@@ -6,6 +6,7 @@
 - Semantic HTML5(Project description)
 - Images
 - Plans for improving
+- Video Link
 
 **Intro**
 
@@ -80,3 +81,7 @@ Also as you can see the class <header class="header page__section"> in the heade
 
 I also noticed one of my <like\_\_button> tags in the card has a spacing issue. it seems it cuts off a piece of the picture ![like_button](./images/demo/Screen%20Shot%202024-08-07%20at%208.30.14%20PM.png)
 Not sure, I think its a spacing problem within the `padding` or `margin` or the `white spacing` in the text hidden feature. Trying to figure it out may need help.
+
+**Video-Link**
+
+https://drive.google.com/file/d/1Tyeg7UeQiAxeAYZVnPlK9FTrsYJzwXb2/view?usp=drive_link
