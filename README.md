@@ -16,6 +16,9 @@ This project is made so all the elements are displayed correctly on popular scre
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
+**Github Pages link**
+https://uffylane.github.io/se_project_aroundtheus/
+
 **Semantics HTML5**
 
 In this project I used:
@@ -84,4 +87,4 @@ Not sure, I think its a spacing problem within the `padding` or `margin` or the 
 
 **Video-Link**
 
-https://drive.google.com/file/d/1Tyeg7UeQiAxeAYZVnPlK9FTrsYJzwXb2/view?usp=drive_link
+https://drive.google.com/file/d/1Tyeg7UeQiAxeAYZVnPlK9FTrsYJzwXb2/view?usp=sharing
