@@ -8,7 +8,7 @@
   width: 282px;
 }
 
-.card__list {
+.cards__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   justify-content: center;
@@ -29,6 +29,8 @@
   align-items: center;
   background: white;
   padding-left: 20px;
+  padding-right: 20px;
+  line-height: 29.05px;
   justify-content: space-between;
   color: black;
 }
@@ -51,11 +53,11 @@
 }
 
 .card__like-button:hover {
-  opacity: 60%;
+  opacity: 50%;
 }
 
 @media screen and (max-width: 480px) {
-  .card__list {
+  .cards__list {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
