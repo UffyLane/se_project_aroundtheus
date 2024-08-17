@@ -24,6 +24,7 @@
 
 .profile__edit-button:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 .profile__add-button {
@@ -36,6 +37,7 @@
 }
 
 .profile__add-button:hover {
+  cursor: pointer;
   opacity: 60%;
 }
 
@@ -73,7 +75,7 @@
   margin-right: 24px;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 638px) {
   .profile {
     flex-direction: column;
     width: 282px;
@@ -94,6 +96,7 @@
     line-height: 16.94px;
     width: 100%;
     text-align: center;
+    margin-bottom: 51px;
   }
 
   .profile__add-button {
