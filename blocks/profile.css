@@ -77,6 +77,7 @@
 
 @media screen and (max-width: 638px) {
   .profile {
+    padding: 40px 20px 0;
     flex-direction: column;
     width: 282px;
   }
@@ -87,6 +88,8 @@
   }
 
   .profile__info {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: center;
   }
