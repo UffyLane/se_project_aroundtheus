@@ -21,4 +21,8 @@
     font-size: 14px;
     line-height: 16.94px;
   }
+  .footer__copyright {
+    padding-top: 48px;
+    padding-left: 19px;
+  }
 }

@@ -21,7 +21,10 @@
 
 @media screen and (max-width: 448px) {
   .page__section {
+    padding-left: 19px;
+    padding-right: 19px;
     margin: 0;
     max-width: 100%;
+    gap: 30px;
   }
 }
