@@ -47,7 +47,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 638px) {
   .cards__list {
     display: flex;
     flex-wrap: wrap;
