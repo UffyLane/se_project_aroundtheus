@@ -27,9 +27,7 @@
     max-width: 100%;
     gap: 30px;
   }
-}
 
-@media screen and (max-width: 450px) {
   .page__content {
     padding: 0;
   }
