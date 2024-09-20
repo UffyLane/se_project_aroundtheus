@@ -12,13 +12,13 @@
   display: none;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
 }
 
 .modal__container {
   background-color: #fff;
-  padding: 36px;
+  padding: 25px 22px;
   width: 430px;
   border-radius: 10px;
   position: relative;

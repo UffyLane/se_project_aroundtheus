@@ -77,13 +77,13 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
 
-  profileEditModal.classList.add("modal__opened");
+  profileEditModal.classList.add("modal_opened");
 });
 
 const modalCloseButton = document.querySelector("#modal-close-button");
 
 modalCloseButton.addEventListener("click", (closePopup) => {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
