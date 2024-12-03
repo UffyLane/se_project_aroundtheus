@@ -110,7 +110,10 @@
 }
 
 .modal__button_disabled {
-  box-shadow: 0px 0px 25px 0px #00000026;
+  opacity: 4%;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
 }
 
 .modal__image {
@@ -128,6 +131,7 @@
 }
 
 .modal__error {
+  display: inherit;
   width: 100%;
   height: 12px;
   top: 163px;
@@ -142,10 +146,6 @@
 
 .modal__label {
   position: relative;
-}
-
-.modal__button_disabled {
-  opacity: 80%;
 }
 
 @media screen and (max-width: 630px) {
