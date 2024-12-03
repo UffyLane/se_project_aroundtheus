@@ -61,8 +61,8 @@ function openModal(modal) {
 }
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.addEventListener("keydown", closeModalOnEsc);
-  modal.addEventListener("mousedown", closeModalByOverlay);
+  document.removeEventListener("keydown", closeModalOnEsc);
+  modal.removeEventListener("mousedown", closeModalByOverlay);
 }
 
 function closeModalByOverlay(evt) {
@@ -114,8 +114,8 @@ function getCardElement(cardData) {
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  cardTitle.textContent = cardTitleInput.value;
-  profileUrl.textContent = profileUrlInput.value;
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
 }
 
