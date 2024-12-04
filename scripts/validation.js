@@ -23,28 +23,6 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-function enableButton(inputEls, submitButton, { submitButtonSelector }) {
-  if (hasInvalidInput(inputEls)) {
-    submitButton.classList.add(submitButtonSelector);
-    submitButton.disabled = true;
-    return;
-  }
-
-  submitButton.classList.remove(submitButtonSelector);
-  submitButton.disabled = false;
-}
-
-function disableButton(inputEls, submitButton, { submitButtonSelector }) {
-  if (hasInvalidInput(inputEls)) {
-    submitButton.classList.add(submitButtonSelector);
-    submitButton.disabled = true;
-    return;
-  }
-
-  submitButton.classList.remove(submitButtonSelector);
-  submitButton.disabled = false;
-}
-
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
     submitButton.classList.add(inactiveButtonClass);

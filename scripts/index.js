@@ -99,7 +99,7 @@ function getCardElement(cardData) {
   });
 
   trashButton.addEventListener("click", () => {
-    cardElement.remove(".card__trash-button");
+    cardElement.remove();
   });
 
   likeButton.addEventListener("click", () => {
