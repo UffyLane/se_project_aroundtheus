@@ -7,14 +7,36 @@ export default class Card {
 
   _setEventlisteners() {
     //".card__like-button"
+    const likeButton = this._cardElement
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
+
     //".card__trash-button"
+    const trashButton = this._cardElement
+      .querySelector(".card__trash-button")
+      .addEventListener("click", () => {
+        this._handleTrashIcon();
+      });
+  }
+
+  _handleLikeIcon() {
+    this._cardElement
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_is-active");
+  }
+
+  _handleTrashIcon() {
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
   getView() {
-    const cardElement = document
+    this._cardElement = document
       .querySelector(this._cardSelector)
+      .content.querySelector(".card")
       .cloneNode(true);
-    console.log(cardElement);
     //get the card view
     //set event listeners
     this._setEventlisteners();
