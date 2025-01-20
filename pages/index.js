@@ -151,10 +151,10 @@ const addCardValidator = new FormValidator({
   formEl: addCardFormElement,
   config: config,
 });
-addCardValidator._enableValidation();
+addCardValidator.enableValidation();
 
 const profileEditValidator = new FormValidator({
   formEl: profileEditForm,
   config: config,
 });
-profileEditValidator._enableValidation();
+profileEditValidator.enableValidation();
