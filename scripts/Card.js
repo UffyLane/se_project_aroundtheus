@@ -8,14 +8,14 @@ export default class Card {
 
   _setEventlisteners() {
     // on the setEventListeners of Card.js
-    const likeButton = this._cardElement
+    this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
 
     //".card__trash-button"
-    const trashButton = this._cardElement
+    this._cardElement
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
         this._handleTrashIcon();

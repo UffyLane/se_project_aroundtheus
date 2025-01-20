@@ -1,5 +1,5 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../scripts/card.js";
+import FormValidator from "../scripts/FormValidator.js";
 
 const initialCards = [
   {
@@ -114,6 +114,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link }, cardlistEl);
   closeModal(addCardModal);
   e.target.reset();
+  addCardValidator.resetValidation(); // Resets validation and disables the button
 }
 
 /**Event Listeners */

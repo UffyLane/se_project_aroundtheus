@@ -57,7 +57,10 @@ export default class FormValidator {
     });
   }
 
-  _enableValidation() {
+  enableValidation() {
     this._setEventlisteners();
+  }
+  resetValidation() {
+    this._toggleButtonState();
   }
 }
