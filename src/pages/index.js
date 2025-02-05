@@ -1,32 +1,25 @@
-import Card from "../scripts/card.js";
-import FormValidator from "../scripts/FormValidator.js";
+import "./index.css";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//import all the classes
+import { initialCards, selectors } from "../components/constants";
+import Card from "../components/Card";
+import FormValidator from "../components/FormValidator";
+import Section from "../components/Section";
+
+//Create instances of the classes
+const CardSection = new Section({
+  renderer: (item) => {
+    const cardEl = new Card(item, selectors.cardTemplate);
+    CardSection.addItems(cardEl.getView());
   },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+  selectors,
+  CardSection,
+});
+
+// initialize all my instances
+CardSection.renderItems(initialCards);
+
+//all the rest
 
 /**Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");

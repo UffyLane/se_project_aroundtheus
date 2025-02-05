@@ -1,0 +1,40 @@
+{
+  "name": "se_project_aroundtheus",
+  "version": "0.0.1",
+  "description": "Sprint 8",
+  "private": "true",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UffyLane/se_project_aroundtheus.git"
+  },
+  "author": "Stuart Clark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UffyLane/se_project_aroundtheus/issues"
+  },
+  "homepage": "https://github.com/UffyLane/se_project_aroundtheus#readme",
+  "dependencies": {
+    "core-js": "3.40.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.26.7",
+    "@babel/preset-env": "7.26.7",
+    "autoprefixer": "10.4.20",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "cssnano": "7.0.6",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "8.5.1",
+    "postcss-loader": "^8.1.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "5.2.0"
+  }
+}
