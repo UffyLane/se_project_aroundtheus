@@ -21,13 +21,15 @@ export default class Card {
         this._handleTrashIcon();
       });
 
-    this._cardImage.addEventListener("click", () => {
-      this._handleImageClick(this._name, this._link);
-    });
+    this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () =>
+        this._handleImageClick({ link: this._link, text: this._text })
+      );
   }
 
   _handleLikeIcon() {
-    this._cardElement
+    this._cardElementthis
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }

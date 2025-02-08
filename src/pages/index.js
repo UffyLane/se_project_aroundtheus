@@ -5,20 +5,29 @@ import { initialCards, selectors } from "../components/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
+import PopupWithImage from "../components/PopupWithImage";
 
 //Create instances of the classes
+const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 const CardSection = new Section({
   renderer: (item) => {
-    const cardEl = new Card(item, selectors.cardTemplate);
+    const cardEl = new Card(
+      {
+        data,
+        handleImageClick: () => {
+          CardPreviewPopup.open(ImageData);
+        },
+      },
+      selectors.cardTemplate
+    );
     CardSection.addItems(cardEl.getView());
   },
-  selectors,
-  CardSection,
+  selector: selectors.cardSection,
 });
 
 // initialize all my instances
 CardSection.renderItems(initialCards);
-
+CardPreviewPopup, setEventListeners();
 //all the rest
 
 /**Elements */
@@ -128,8 +137,6 @@ closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
   button.addEventListener("click", () => closeModal(popup));
 });
-
-initialCards.forEach((cardData) => renderCard(cardData, cardlistEl));
 
 const config = {
   formSelector: ".modal__form",
