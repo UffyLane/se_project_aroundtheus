@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 export default class Section {
   constructor({ renderer, selector }) {
     this._renderer = renderer;
