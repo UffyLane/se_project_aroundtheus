@@ -20,18 +20,6 @@ export default class Popup {
   }
 
   setEventListeners() {
-    profileEditButton.addEventListener("click", () => {
-      profileTitleInput.value = profileTitle.textContent;
-      profileDescriptionInput.value = profileDescription.textContent;
-      openModal(profileEditModal);
-    });
-
-    profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-    addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-    addNewCardButton.addEventListener("click", () => {
-      openModal(addCardModal);
-    });
-
     closeButtons.forEach((button) => {
       const popup = button.closest(".modal");
       button.addEventListener("click", () => closeModal(popup));

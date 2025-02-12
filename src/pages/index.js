@@ -6,29 +6,32 @@ import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
+import Popup from "../components/Popup";
 
 //Create instances of the classes
 const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
-const CardSection = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const cardEl = new Card(
-      {
-        item,
-        handleImageClick: () => {
-          CardPreviewPopup.open(ImageData);
+const CardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardEl = new Card(
+        {
+          item,
+          handleImageClick: () => {
+            CardPreviewPopup.open(ImageData);
+          },
         },
-      },
-      selectors.cardTemplate
-    );
-    CardSection.addItems(cardEl.getView());
+        selectors.cardTemplate
+      );
+      CardSection.addItems(cardEl.getView());
+    },
   },
-  selector: selectors.cardSection,
-});
+  selectors.cardSection
+);
 
 // initialize all my instances
 CardSection.renderItems(initialCards);
-CardPreviewPopup, setEventListeners();
+CardPreviewPopup.setEventListeners();
 //all the rest
 
 /**Elements */
@@ -36,7 +39,13 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const closeButtons = document.querySelectorAll(".modal__close");
 const addNewCardButton = document.querySelector(".profile__add-button");
-const addCardModal = document.querySelector("#add-card-modal");
+const addCardModal = new PopupWithForm(Popup);
+addCardModal.setEventListeners();
+profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  addCardModal.open();
+});
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
