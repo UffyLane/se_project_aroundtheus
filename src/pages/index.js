@@ -10,21 +10,14 @@ import Popup from "../components/Popup";
 
 //Create instances of the classes
 const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  CardSection.addItems(cardElement);
+}
 const CardSection = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const cardEl = new Card(
-        {
-          item,
-          handleImageClick: () => {
-            CardPreviewPopup.open(ImageData);
-          },
-        },
-        selectors.cardTemplate
-      );
-      CardSection.addItems(cardEl.getView());
-    },
+    renderer: renderCard,
   },
   selectors.cardSection
 );
