@@ -39,7 +39,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const closeButtons = document.querySelectorAll(".modal__close");
 const addNewCardButton = document.querySelector(".profile__add-button");
-const addCardModal = new PopupWithForm(Popup);
+const addCardModal = new PopupWithForm("#add-modal-card", (e) => {});
 addCardModal.setEventListeners();
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;

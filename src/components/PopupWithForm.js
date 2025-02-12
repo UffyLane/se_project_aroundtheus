@@ -1,6 +1,6 @@
 import Popup from "./Popup";
 
-class PopupWithForm extends Popup {
+export default class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super({ popupSelector });
     this._popupElement.querySelector(".modal__form");
@@ -12,8 +12,3 @@ class PopupWithForm extends Popup {
     super.close();
   }
 }
-
-const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
-newCardPopup.open();
-
-newCardPopup.close();
