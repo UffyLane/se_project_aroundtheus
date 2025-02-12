@@ -10,10 +10,11 @@ import PopupWithImage from "../components/PopupWithImage";
 //Create instances of the classes
 const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 const CardSection = new Section({
+  items: initialCards,
   renderer: (item) => {
     const cardEl = new Card(
       {
-        data,
+        item,
         handleImageClick: () => {
           CardPreviewPopup.open(ImageData);
         },
