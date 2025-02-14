@@ -99,11 +99,6 @@ function createCard(data) {
   return card.getView();
 }
 
-function renderCard(cardData, wrapper) {
-  const cardElement = createCard(cardData);
-  wrapper.prepend(cardElement);
-}
-
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
   e.preventDefault();

@@ -11,4 +11,11 @@ export default class PopupWithForm extends Popup {
     this._popupForm.reset();
     super.close();
   }
+
+  _getInputValues() {}
+
+  setEventListeners() {
+    this._popupElement.addEventListener("submit", handleProfileEditSubmit);
+    this._popupElement.addEventListener("submit", handleAddCardFormSubmit);
+  }
 }
