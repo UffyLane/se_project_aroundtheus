@@ -6,7 +6,7 @@ import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
-import Popup from "../components/Popup";
+import PopupWithForm from "../components/PopupWithForm";
 
 //Create instances of the classes
 const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
