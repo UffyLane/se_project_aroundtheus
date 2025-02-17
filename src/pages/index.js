@@ -32,7 +32,10 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const closeButtons = document.querySelectorAll(".modal__close");
 const addNewCardButton = document.querySelector(".profile__add-button");
-const addCardModal = new PopupWithForm("#add-modal-card", (e) => {});
+const addCardModal = new PopupWithForm({
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: () => {},
+});
 addCardModal.setEventListeners();
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
@@ -63,14 +66,14 @@ const previewImageModalCaption =
 
 /**Functions */
 function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalOnEsc);
-  modal.addEventListener("mousedown", closeModalByOverlay);
+  openModal.classList.add("modal_opened");
+  document.addEventListener("keydown", this._handleEscClose);
+  document.addEventListener("mousedown", closeModalByOverlay);
 }
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalOnEsc);
-  modal.removeEventListener("mousedown", closeModalByOverlay);
+  closeModal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", this._handleEscClose);
+  document.removeEventListener("mousedown", closeModalByOverlay);
 }
 
 function closeModalByOverlay(evt) {
