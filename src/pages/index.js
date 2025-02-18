@@ -9,6 +9,12 @@ import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 
 //Create instances of the classes
+const createCard = (data) => {
+  const card = new Card(data, "#card-template", () => {
+    CardPreviewPopup.open(data);
+  });
+  return card.getView();
+};
 const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
@@ -34,7 +40,7 @@ const profileEditModal = new PopupWithForm({
   handleFormSubmit: () => {},
 });
 profileEditModal.setEventListeners();
-const handleImageClickOpenButton = document.querySelector("card__image-modal");
+const handleImageClickOpenButton = document.querySelector("#card__image-modal");
 
 const handleImageClick = new Card({
   popupSelector: "#card-template",
@@ -42,7 +48,7 @@ const handleImageClick = new Card({
 });
 
 handleImageClickOpenButton.addEventListener("click", () => {
-  handleImageClickOpenButton.open();
+  handleImageClick.open();
 });
 
 const profileEditModalCloseButton = document.querySelector(
@@ -105,6 +111,12 @@ function closeModalOnEsc(evt) {
 }
 
 // on index.js
+function handleImageClick(name, link) {
+  previewImageModalImg.src = link;
+  previewImageModalImg.alt = name;
+  previewImageModalCaption.textContent = name;
+  handleImageClickOpenButton.open();
+}
 
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
