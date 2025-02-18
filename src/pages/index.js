@@ -111,12 +111,6 @@ function closeModalOnEsc(evt) {
 }
 
 // on index.js
-function handleImageClick(name, link) {
-  previewImageModalImg.src = link;
-  previewImageModalImg.alt = name;
-  previewImageModalCaption.textContent = name;
-  handleImageClickOpenButton.open();
-}
 
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
