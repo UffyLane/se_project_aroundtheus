@@ -95,29 +95,12 @@ const previewImageModalImg = previewImageModal.querySelector(".modal__image");
 const previewImageModalCaption =
   previewImageModal.querySelector(".modal__caption");
 
-/**Functions */
-
-function closeModalByOverlay(evt) {
-  if (evt.target.classList.contains("modal")) {
-    closeModal(evt.target);
-  }
-}
-
-function closeModalOnEsc(evt) {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  }
-}
-
-// on index.js
-
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  profileEditModal.close();
 }
 
 function handleAddCardFormSubmit(e) {
@@ -125,7 +108,7 @@ function handleAddCardFormSubmit(e) {
   const name = cardTitleInput.value;
   const link = profileUrlInput.value;
   renderCard({ name, link }, cardlistEl);
-  closeModal(addCardModal);
+  addCardModal.close();
   e.target.reset();
   addCardValidator.resetValidation(); // Resets validation and disables the button
 }
