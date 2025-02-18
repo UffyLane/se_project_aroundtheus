@@ -34,6 +34,16 @@ const profileEditModal = new PopupWithForm({
   handleFormSubmit: () => {},
 });
 profileEditModal.setEventListeners();
+const handleImageClickOpenButton = document.querySelector("card__image-modal");
+
+const handleImageClick = new Card({
+  popupSelector: "#card-template",
+  handleFormSubmit: () => {},
+});
+
+handleImageClickOpenButton.addEventListener("click", () => {
+  handleImageClickOpenButton.open();
+});
 
 const profileEditModalCloseButton = document.querySelector(
   "#modal-close-button"
@@ -95,17 +105,6 @@ function closeModalOnEsc(evt) {
 }
 
 // on index.js
-function handleImageClick(name, link) {
-  previewImageModalImg.src = link;
-  previewImageModalImg.alt = name;
-  previewImageModalCaption.textContent = name;
-  openModal(previewImageModal);
-}
-
-function createCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
-  return card.getView();
-}
 
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
