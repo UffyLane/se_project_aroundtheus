@@ -31,17 +31,29 @@ CardPreviewPopup.setEventListeners();
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const closeButtons = document.querySelectorAll(".modal__close");
+const addCardModalCloseButton = document.querySelector(
+  "#add-card-modal-close-button"
+);
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: () => {},
 });
+addNewCardButton.addEventListener("click", () => {
+  addCardModal.open();
+});
+
+addCardModalCloseButton.addEventListener("click", () => {
+  addCardModal.close();
+});
+
 addCardModal.setEventListeners();
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   addCardModal.open();
 });
+
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -65,16 +77,6 @@ const previewImageModalCaption =
   previewImageModal.querySelector(".modal__caption");
 
 /**Functions */
-function openModal(modal) {
-  openModal.classList.add("modal_opened");
-  document.addEventListener("keydown", this._handleEscClose);
-  document.addEventListener("mousedown", closeModalByOverlay);
-}
-function closeModal(modal) {
-  closeModal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", this._handleEscClose);
-  document.removeEventListener("mousedown", closeModalByOverlay);
-}
 
 function closeModalByOverlay(evt) {
   if (evt.target.classList.contains("modal")) {
@@ -130,9 +132,6 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-addNewCardButton.addEventListener("click", () => {
-  openModal(addCardModal);
-});
 
 closeButtons.forEach((button) => {
   const popup = button.closest(".modal");
