@@ -40,16 +40,6 @@ const profileEditModal = new PopupWithForm({
   handleFormSubmit: () => {},
 });
 profileEditModal.setEventListeners();
-const handleImageClickOpenButton = document.querySelector("#card__image-modal");
-
-const handleImageClick = new Card({
-  popupSelector: "#card-template",
-  handleFormSubmit: () => {},
-});
-
-handleImageClickOpenButton.addEventListener("click", () => {
-  handleImageClick.open();
-});
 
 const profileEditModalCloseButton = document.querySelector(
   "#modal-close-button"
