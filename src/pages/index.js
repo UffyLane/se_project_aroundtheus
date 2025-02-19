@@ -7,6 +7,7 @@ import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
+import UserInfo from "../components/UserInfo";
 
 //Create instances of the classes
 const createCard = (data) => {
