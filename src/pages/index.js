@@ -52,7 +52,7 @@ const addCardModalCloseButton = document.querySelector(
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
-  handleFormSubmit: () => {},
+  handleFormSubmit: handleAddCardFormSubmit,
 });
 addNewCardButton.addEventListener("click", () => {
   addCardModal.open();
@@ -73,18 +73,11 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = document.forms["edit-profile"];
 const addCardFormElement = document.forms["add-card"];
 const cardlistEl = document.querySelector(".cards__list");
-const cardTitleInput = addCardFormElement.querySelector(
-  ".modal__input_type_title"
-);
-const profileUrlInput = addCardFormElement.querySelector(
-  ".modal__input_type_url"
-);
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-const previewImageModal = document.querySelector("#preview-image-modal");
-const previewImageModalImg = previewImageModal.querySelector(".modal__image");
-const previewImageModalCaption =
-  previewImageModal.querySelector(".modal__caption");
+
+
+const getUserInfo = new UserInfo({
+  profileTitle, profileDescription
+});
 
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
@@ -94,13 +87,10 @@ function handleProfileEditSubmit(e) {
   profileEditModal.close();
 }
 
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = profileUrlInput.value;
-  renderCard({ name, link }, cardlistEl);
+function handleAddCardFormSubmit(cardData) {
+  console.log(cardData);
+  renderCard(cardData, cardlistEl);
   addCardModal.close();
-  e.target.reset();
   addCardValidator.resetValidation(); // Resets validation and disables the button
 }
 
@@ -113,7 +103,7 @@ profileEditButton.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+// addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 profileEditModalCloseButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
