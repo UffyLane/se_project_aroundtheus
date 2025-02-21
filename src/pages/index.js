@@ -75,15 +75,14 @@ const addCardFormElement = document.forms["add-card"];
 const cardlistEl = document.querySelector(".cards__list");
 
 
-const getUserInfo = new UserInfo({
+const userInfo = new UserInfo({
   profileTitle, profileDescription
 });
 
 /**Event Handlers */
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+ userInfo.setUserInfo(profileTitleInput.value, profileDescriptionInput.value);
   profileEditModal.close();
 }
 
@@ -97,8 +96,7 @@ function handleAddCardFormSubmit(cardData) {
 /**Event Listeners */
 
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  userInfo.getUserInfo(profileTitleInput.value, profileDescriptionInput.value);
   profileEditModal.open();
 });
 
@@ -106,8 +104,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 // addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 profileEditModalCloseButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  userInfo.getUserInfo(profileTitleInput.value, profileDescriptionInput.value);
   profileEditModal.close();
 });
 
