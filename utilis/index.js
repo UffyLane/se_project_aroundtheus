@@ -1,27 +1,27 @@
 import "./index.css";
 
 //import all the classes
-import { initialCards, selectors } from "../components/constants";
-import Card from "../components/Card";
-import FormValidator from "../components/FormValidator";
-import Section from "../components/Section";
-import PopupWithImage from "../components/PopupWithImage";
-import PopupWithForm from "../components/PopupWithForm";
-import UserInfo from "../components/UserInfo";
+import { initialCards, selectors } from "../src/components/constants";
+import Card from "../src/components/Card";
+import FormValidator from "../src/components/FormValidator";
+import Section from "../src/components/Section";
+import PopupWithImage from "../src/components/PopupWithImage";
+import PopupWithForm from "../src/components/PopupWithForm";
+import UserInfo from "../src/components/UserInfo";
 
 //Create instances of the classes
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
-    CardPreviewPopup.open(data);
+    cardPreviewPopup.open(data);
   });
   return card.getView();
 };
-const CardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
+const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
-  CardSection.addItems(cardElement);
+  cardSection.addItems(cardElement);
 }
-const CardSection = new Section(
+const cardSection = new Section(
   {
     items: initialCards,
     renderer: renderCard,
@@ -30,8 +30,7 @@ const CardSection = new Section(
 );
 
 // initialize all my instances
-CardSection.renderItems(initialCards);
-CardPreviewPopup.setEventListeners();
+cardPreviewPopup.setEventListeners();
 //all the rest
 
 /**Elements */
@@ -96,7 +95,7 @@ function handleAddCardFormSubmit(cardData) {
 /**Event Listeners */
 
 profileEditButton.addEventListener("click", () => {
-  userInfo.getUserInfo(profileTitleInput.value, profileDescriptionInput.value);
+  userInfo.setUserInfo(profileTitleInput.value, profileDescriptionInput.value);
   profileEditModal.open();
 });
 
@@ -108,14 +107,6 @@ profileEditModalCloseButton.addEventListener("click", () => {
   profileEditModal.close();
 });
 
-const config = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 const addCardValidator = new FormValidator({
   formEl: addCardFormElement,
