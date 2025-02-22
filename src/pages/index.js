@@ -1,13 +1,13 @@
 import "./index.css";
 
 //import all the classes
-import { initialCards, selectors } from "../src/components/constants";
-import Card from "../src/components/Card";
-import FormValidator from "../src/components/FormValidator";
-import Section from "../src/components/Section";
-import PopupWithImage from "../src/components/PopupWithImage";
-import PopupWithForm from "../src/components/PopupWithForm";
-import UserInfo from "../src/components/UserInfo";
+import { initialCards, selectors } from "../../utils/constants";
+import Card from "../components/Card";
+import FormValidator from "../components/FormValidator";
+import Section from "../components/Section";
+import PopupWithImage from "../components/PopupWithImage";
+import PopupWithForm from "../components/PopupWithForm";
+import UserInfo from "../components/UserInfo";
 
 //Create instances of the classes
 const createCard = (data) => {
