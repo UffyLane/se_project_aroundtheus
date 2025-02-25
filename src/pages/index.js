@@ -70,7 +70,7 @@ const userInfo = new UserInfo({
 
 /**Event Handlers */
 function handleProfileEditSubmit() {
-  userInfo.setUserInfo(profileTitleInput.value, profileDescriptionInput.value);
+  userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
 }
 
@@ -78,7 +78,7 @@ function handleAddCardFormSubmit(cardData) {
   console.log(cardData);
   renderCard(cardData, cardlistEl);
   addCardModal.close();
-  addCardValidator.resetValidation(); // Resets validation and disables the button
+  addCardValidator.disableButton;
 }
 
 /**Event Listeners */
