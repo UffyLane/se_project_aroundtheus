@@ -22,7 +22,7 @@ export default class Card {
       });
 
     this._cardElement
-      .querySelector(".card__image")
+      .querySelector("#card__image-modal")
       .addEventListener("click", () =>
         this._handleImageClick({ link: this._link, text: this._text })
       );
