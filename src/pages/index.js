@@ -1,7 +1,7 @@
 import "./index.css";
 
 //import all the classes
-import { initialCards, selectors, config } from "../../utils/constants";
+import { initialCards, selectors, config } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
