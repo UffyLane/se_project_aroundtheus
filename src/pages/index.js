@@ -69,9 +69,10 @@ const userInfo = new UserInfo({
 });
 
 /**Event Handlers */
-function handleProfileEditSubmit() {
+function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
+  addCardValidator.disableButton;
 }
 
 function handleAddCardFormSubmit(cardData) {
