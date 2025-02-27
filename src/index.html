@@ -17,14 +17,14 @@
       <section class="profile page__section">
         <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="Avatar" class="profile__image">
         <div class="profile__info">
-          <h1 class="profile__title">Jacques Cousteau</h1>
+          <h1 class="profile__title" id="profile-title-name">Jacques Cousteau</h1>
           <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
-          <p class="profile__description">Explorer</p>
+          <p class="profile__description" id="profile-description-title">Explorer</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button"  id="profile-add-button" type="button"></button>
       </section>
       <div class="cards page__section">
-        <ul class="cards__list"></ul>
+        <ul class="cards__list" id="card-list-id"></ul>
       </div>
     </main>
     <footer class="footer page__section">
@@ -85,12 +85,12 @@
   </div>
 
   <template id="card-template">
-    <li class="card">
+    <li class="card" id="card-id">
       <img src="" alt="" class="card__image" id="card__image-modal">
       <div class="card__description">
-        <h2 class="card__title"></h2>
-        <button class="card__like-button" type="button"></button>
-        <button class="card__trash-button" type="button"></button>
+        <h2 class="card__title" id="card-title-id"></h2>
+        <button class="card__like-button" id= "card-like-button" type="button"></button>
+        <button class="card__trash-button" id= "card-trash-button" type="button"></button>
       </div>
     </li>
   </template>

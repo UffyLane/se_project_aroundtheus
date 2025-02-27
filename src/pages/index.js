@@ -42,7 +42,7 @@ const profileEditModal = new PopupWithForm({
 });
 profileEditModal.setEventListeners();
 
-const addNewCardButton = document.querySelector(".profile__add-button");
+const addNewCardButton = document.querySelector("#profile-add-button");
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit,
@@ -53,15 +53,15 @@ addNewCardButton.addEventListener("click", () => {
 
 addCardModal.setEventListeners();
 
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
+const profileTitle = document.querySelector("#profile-title-name");
+const profileDescription = document.querySelector("#profile-description-title");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditForm = document.forms["edit-profile"];
-const addCardFormElement = document.forms["add-card"];
-const cardlistEl = document.querySelector(".cards__list");
+const profileEditForm = document.forms["edit-profile-modal__form"];
+const addCardFormElement = document.forms["add-card-modal__form"];
+const cardlistEl = document.querySelector("card-list-id");
 
 const userInfo = new UserInfo({
   profileTitle,

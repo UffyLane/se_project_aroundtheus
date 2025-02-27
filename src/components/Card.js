@@ -9,14 +9,14 @@ export default class Card {
   _setEventlisteners() {
     // on the setEventListeners of Card.js
     this._cardElement
-      .querySelector(".card__like-button")
+      .querySelector("#card-like-button")
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
 
     //".card__trash-button"
     this._cardElement
-      .querySelector(".card__trash-button")
+      .querySelector("#card-trash-button")
       .addEventListener("click", () => {
         this._handleTrashIcon();
       });
@@ -30,7 +30,7 @@ export default class Card {
 
   _handleLikeIcon() {
     this._cardElement
-      .querySelector(".card__like-button")
+      .querySelector("#card-like-button")
       .classList.toggle("card__like-button_active");
   }
 
@@ -42,9 +42,9 @@ export default class Card {
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".card")
+      .content.querySelector("#card-id")
       .cloneNode(true);
-    this._cardCaption = this._cardElement.querySelector(".card__title");
+    this._cardCaption = this._cardElement.querySelector("#card-title-id");
     this._cardImage = this._cardElement.querySelector("#card__image-modal");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
