@@ -72,14 +72,14 @@ const userInfo = new UserInfo({
 function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
-  addCardValidator.disableButton;
+  addCardValidator.disableButton();
 }
 
 function handleAddCardFormSubmit(cardData) {
   console.log(cardData);
   renderCard(cardData, cardlistEl);
   addCardModal.close();
-  addCardValidator.disableButton;
+  addCardValidator.disableButton();
 }
 
 /**Event Listeners */
