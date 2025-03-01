@@ -72,7 +72,6 @@ const userInfo = new UserInfo({
 function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
-  addCardValidator.disableButton();
 }
 
 function handleAddCardFormSubmit(cardData) {
@@ -102,3 +101,4 @@ const profileEditValidator = new FormValidator({
   config: config,
 });
 profileEditValidator.enableValidation();
+

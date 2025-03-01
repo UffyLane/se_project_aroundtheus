@@ -21,8 +21,8 @@ export default class Card {
         this._handleTrashIcon();
       });
 
-    this._cardElement
-      .querySelector("#card__image-modal")
+    
+ 
       this._cardImage.addEventListener("click", () =>
         this._handleImageClick({ link: this._link, text: this._text })
       );
