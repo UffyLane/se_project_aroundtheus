@@ -102,3 +102,85 @@ const profileEditValidator = new FormValidator({
 });
 profileEditValidator.enableValidation();
 
+fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+  method: "GET",
+  headers: {
+    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28"
+  }
+})
+  .then(res => res.json())
+  .then((result) => {
+    document.getElementById("profile-title-name").textContent = result.name;
+    document.getElementById("profile-description-title").textContent = result.about;
+    document.getElementById("profile-image-id").src = result.avatar;
+  })
+
+  .catch((err) => {
+    console.error(err); 
+  })
+  .finally(()=>{
+
+  });
+
+  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+  method: "GET",
+  headers: {
+    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28", "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Jacques Cousteau ",
+    about: "Explorer"
+  })
+
+  .then(res => res.json())
+  .then((result) => {
+    document.getElementById("card-title-id").textContent = result.name;
+    document.getElementById("card__image-modal").textContent = result.link;
+    document.getElementById("card-template").src = result._id;
+  })
+
+  .catch((err) => {
+    console.error(err); 
+  })
+  .finally(()=>{
+})
+
+});
+
+fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+  method: "POST",
+  headers: {
+    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28", "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg"
+  })
+
+  .then(res => res.json())
+  .then((result) => {
+    document.getElementById("card-title-id").textContent = result.name;
+    document.getElementById("card__image-modal").textContent = result.link;
+    document.getElementById("card-id").src = result._id;
+  })
+
+  .catch((err) => {
+    console.error(err); 
+  })
+  .finally(()=>{
+})
+
+});
+
+
+
+  
+
+
+ 
+
+
+  
+
+
+ 
