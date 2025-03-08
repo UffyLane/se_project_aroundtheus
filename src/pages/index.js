@@ -8,8 +8,19 @@ import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
+import Api from "../pages/Api";
 
 //Create instances of the classes
+
+const api = new Api({
+  baseUrl : "https://around-api.en.tripleten-services.com/v1/users/",
+  authToken: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28"
+})
+
+
+
+
+
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
     cardPreviewPopup.open(data);
@@ -21,13 +32,14 @@ function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardSection.addItems(cardElement);
 }
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: renderCard,
-  },
-  selectors.cardSection
-);
+api.fetchInitialData()
+.then(([userData, cardsData]) => {
+ console.log(userData);
+ console.log(cardsData);
+})
+.catch(err => {
+  console.error(err);
+});
 
 // initialize all my instances
 cardSection.renderItems();
@@ -46,6 +58,7 @@ const addNewCardButton = document.querySelector("#profile-add-button");
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit,
+  
 });
 addNewCardButton.addEventListener("click", () => {
   addCardModal.open();
@@ -67,6 +80,13 @@ const userInfo = new UserInfo({
   profileTitle,
   profileDescription,
 });
+
+api.getUserInfo().then(userData => {
+  userInfo.setUserInfo({
+userNameSelector: userData.Name,
+userDescriptionSelector: userData.about
+  })
+})
 
 /**Event Handlers */
 function handleProfileEditSubmit(data) {
@@ -102,75 +122,27 @@ const profileEditValidator = new FormValidator({
 });
 profileEditValidator.enableValidation();
 
-fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
-  method: "GET",
-  headers: {
-    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28"
-  }
-})
-  .then(res => res.json())
-  .then((result) => {
-    document.getElementById("profile-title-name").textContent = result.name;
-    document.getElementById("profile-description-title").textContent = result.about;
-    document.getElementById("profile-image-id").src = result.avatar;
-  })
 
-  .catch((err) => {
-    console.error(err); 
-  })
-  .finally(()=>{
 
-  });
 
-  fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  method: "GET",
-  headers: {
-    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28", "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name: "Jacques Cousteau ",
-    about: "Explorer"
-  })
 
-  .then(res => res.json())
-  .then((result) => {
-    document.getElementById("card-title-id").textContent = result.name;
-    document.getElementById("card__image-modal").textContent = result.link;
-    document.getElementById("card-template").src = result._id;
-  })
 
-  .catch((err) => {
-    console.error(err); 
-  })
-  .finally(()=>{
-})
 
-});
 
-fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  method: "POST",
-  headers: {
-    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28", "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg"
-  })
 
-  .then(res => res.json())
-  .then((result) => {
-    document.getElementById("card-title-id").textContent = result.name;
-    document.getElementById("card__image-modal").textContent = result.link;
-    document.getElementById("card-id").src = result._id;
-  })
 
-  .catch((err) => {
-    console.error(err); 
-  })
-  .finally(()=>{
-})
 
-});
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
