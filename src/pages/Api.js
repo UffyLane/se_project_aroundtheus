@@ -25,7 +25,7 @@ class Api {
 
 
   addCard({name, link}) {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/cards`, {
         method: "POST",
         headers: {
           authorization: this_authToken, "Content-Type": "application/json"
@@ -36,13 +36,7 @@ class Api {
           link
         })
       
-        .then(res => res.json())
-        .then((result) => {
-          document.getElementById("card-title-id").textContent = result.name;
-          document.getElementById("card__image-modal").textContent = result.link;
-          document.getElementById("card-id").src = result._id;
-        })
-      
+        .then(res => res.ok ? res.json(): Promise.reject(`Error: ${res.status}`))
         .catch((err) => {
           console.error(err); 
         })

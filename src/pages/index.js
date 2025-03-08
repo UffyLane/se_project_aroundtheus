@@ -58,7 +58,6 @@ const addNewCardButton = document.querySelector("#profile-add-button");
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit,
-  
 });
 addNewCardButton.addEventListener("click", () => {
   addCardModal.open();
