@@ -37,20 +37,9 @@ const createCard = (data) => {
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
+  cardSection.addItems(cardElement);
   
-  
-  api.fetchInitialData()
-    .then(([userData, cardsData]) => {
-      console.log("hey");
-     userInfo.setUserInfo(userData.name, userData.about)
-      cardSection.renderItems(cardsData);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-    
-   
-  };
+
     // initialize all my instances
 
     cardPreviewPopup.setEventListeners();
@@ -132,7 +121,18 @@ profileEditValidator.enableValidation();
 
 
 
+api.fetchInitialData()
+.then(([userData, cardsData]) => {
+  console.log("hey");
+ userInfo.setUserInfo(userData.name, userData.about)
+  cardSection.renderItems(cardsData);
+})
+.catch(err => {
+  console.error(err);
+});
 
+
+};
 
 
 
