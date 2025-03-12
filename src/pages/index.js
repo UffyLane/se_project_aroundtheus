@@ -29,37 +29,32 @@ const createCard = (data) => {
   return card.getView();
 };
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
-function renderCard(cardData) {
-  const cardElement = createCard(cardData);
-  cardSection.addItems(cardElement);
+  function renderCard(cardData) {
+    const cardElement = createCard(cardData);
+    cardSection.addItem(cardElement); 
+  }
   
-}
-
-api.fetchInitialData()
-.then(([userData, cardsData]) => {
- console.log(userData);
- console.log(cardsData);
-})
-.catch(err => {
-  console.error(err);
-});
-
-const cardSection = new Section(
-  {
-    renderer: (data) => {cardSection.addItem(createCard(data))},
-  },
-  selectors.cardSection
+  api.fetchInitialData()
+    .then(([userData, cardsData]) => {
+      console.log(userData);
+      console.log(cardsData);
+      const cardSection = new Section(
+        {
+          renderer: (data) => {
+            cardSection.addItems(createCard(data))
+          },
+        },
+        selectors.cardSection
+      );
+    
+      cardSection.renderItems(cardsData);
+      cardPreviewPopup.setEventListeners(); 
   
+    })
+    .catch(err => {
+      console.error(err);
+    });
   
-);
-
-
-// initialize all my instances
-cardSection.renderItems();
-cardPreviewPopup.setEventListeners();
-
-
-
 
 /**Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
