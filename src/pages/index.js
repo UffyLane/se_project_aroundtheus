@@ -29,31 +29,30 @@ const createCard = (data) => {
   return card.getView();
 };
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
-  function renderCard(cardData) {
-    const cardElement = createCard(cardData);
-    cardSection.addItem(cardElement); 
-  }
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
   
   api.fetchInitialData()
     .then(([userData, cardsData]) => {
       console.log(userData);
       console.log(cardsData);
-      const cardSection = new Section(
-        {
-          renderer: (data) => {
-            cardSection.addItems(createCard(data))
-          },
-        },
-        selectors.cardSection
-      );
-    
-      cardSection.renderItems(cardsData);
-      cardPreviewPopup.setEventListeners(); 
-  
     })
     .catch(err => {
       console.error(err);
     });
+    
+    const cardSection = new Section(
+      {
+        renderer: (data) => {cardSection.addItems(createCard(data))},
+      },
+      selectors.cardSection
+      
+    );
+    
+  }
+    // initialize all my instances
+    cardSection.userData();
+    cardPreviewPopup.setEventListeners();
   
 
 /**Elements */
