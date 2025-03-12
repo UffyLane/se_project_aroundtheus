@@ -1,7 +1,7 @@
 import "./index.css";
 
 //import all the classes
-import { initialCards, selectors, config } from "../utils/constants";
+import { selectors, config } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
@@ -12,13 +12,14 @@ import Api from "../pages/Api";
 
 //Create instances of the classes
 
+
 const api = new Api({
-  baseUrl : "https://around-api.en.tripleten-services.com/v1/users/",
-  authToken: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28"
-})
-
-
-
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "d78649ed-fd14-41f7-9a2b-04c3fb13cc28",
+    "content-type": "application/json"
+  }
+});
 
 
 const createCard = (data) => {
@@ -31,7 +32,9 @@ const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardSection.addItems(cardElement);
+  
 }
+
 api.fetchInitialData()
 .then(([userData, cardsData]) => {
  console.log(userData);
@@ -41,10 +44,22 @@ api.fetchInitialData()
   console.error(err);
 });
 
+const cardSection = new Section(
+  {
+    renderer: (data) => {cardSection.addItem(createCard(data))},
+  },
+  selectors.cardSection
+  
+  
+);
+
+
 // initialize all my instances
 cardSection.renderItems();
 cardPreviewPopup.setEventListeners();
-//all the rest
+
+
+
 
 /**Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -92,6 +107,10 @@ function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
 }
+//api.handleAddCardFormSubmit().then(([cardsData, cardlistEl]) => {
+ // console.log(cardsData);
+ // console.log(cardlistEl);
+ //})
 
 function handleAddCardFormSubmit(cardData) {
   console.log(cardData);
