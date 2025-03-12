@@ -20,7 +20,13 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
-
+const cardSection = new Section(
+  {
+    renderer: (data) => {cardSection.addItems(createCard(data))},
+  },
+  selectors.cardSection
+  
+);
 
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
@@ -32,26 +38,21 @@ const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   
+  
   api.fetchInitialData()
     .then(([userData, cardsData]) => {
-      console.log(userData);
-      console.log(cardsData);
+      console.log("hey");
+     userInfo.setUserInfo(userData.name, userData.about)
+      cardSection.renderItems(cardsData);
     })
     .catch(err => {
       console.error(err);
     });
     
-    const cardSection = new Section(
-      {
-        renderer: (data) => {cardSection.addItems(createCard(data))},
-      },
-      selectors.cardSection
-      
-    );
-    
-  }
+   
+  };
     // initialize all my instances
-    cardSection.userData();
+
     cardPreviewPopup.setEventListeners();
   
 
@@ -89,12 +90,7 @@ const userInfo = new UserInfo({
   profileDescription,
 });
 
-api.getUserInfo().then(userData => {
-  userInfo.setUserInfo({
-userNameSelector: userData.Name,
-userDescriptionSelector: userData.about
-  })
-})
+
 
 /**Event Handlers */
 function handleProfileEditSubmit(data) {
