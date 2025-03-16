@@ -1,30 +1,34 @@
 import Popup from "./Popup";
 
 export default class PopupWithForm extends Popup {
-  constructor({ popupSelector, handleFormSubmit,}) {
-    super({ popupSelector });
-    this._popupForm = this._popupElement.querySelector(".modal__form");
+  constructor({ popupSelector, handleFormSubmit}) {
+    super({ popupSelector});
     this._handleFormSubmit = handleFormSubmit;
+    this._popupForm = this._popupElement.querySelector('.modal__form');
+    this._inputList = this._popupElement.querySelectorAll('.modal__input');
   }
 
   _getInputValues() {
-    this._inputList = this._popupElement.querySelectorAll(".modal__input");
     this._formValues = {};
-    this._inputList.forEach((input) => {
-      this._formValues[input.name] = input.value;
-    });
+    this._inputList.forEach(input => this._formValues[input.name] = input.value);
 
     return this._formValues;
   }
 
-  setEventListeners() {
-    super.setEventListeners();
-
-    this._popupForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-      this._popupForm.reset();
-    });
+  _submit(evt) { //this method is to be called when form is submited
+    evt.preventDefault();
+    this._handleFormSubmit(this._getInputValues()); //call external callback _handleFormSubmit
+    this.close();
   }
 
+  setEventListeners() {
+    super.setEventListeners();
+    //Use 'this._submit' bounded method instead of anonymous function
+    this._popupForm.addEventListener('submit', this._submit);
+  }
+
+  close() {
+    this._popupForm.reset();
+    super.close();
+  }
 }

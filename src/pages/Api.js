@@ -24,22 +24,25 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  addCard({ name, link }) {
+  addCardModal({data}) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
-        name,
-        link,
+        name: data.name,
+        link: data.link
       })
 
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-        )
+        .then(res => {
+         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    })
         .catch((err) => {
           console.error(err);
         })
-        .finally(() => {}),
-    });
-  }
+      })
 }
+
+}
+
+
+

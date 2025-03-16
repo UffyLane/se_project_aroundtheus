@@ -20,6 +20,10 @@ const api = new Api({
     "content-type": "application/json"
   }
 });
+
+
+
+
 const cardSection = new Section(
   {
     renderer: (data) => {cardSection.addItems(createCard(data))},
@@ -39,7 +43,7 @@ function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardSection.addItems(cardElement);
   
-
+}
     // initialize all my instances
 
     cardPreviewPopup.setEventListeners();
@@ -54,10 +58,28 @@ const profileEditModal = new PopupWithForm({
 profileEditModal.setEventListeners();
 
 const addNewCardButton = document.querySelector("#profile-add-button");
+
 const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
-  handleFormSubmit: handleAddCardFormSubmit,
-});
+  handleFormSubmit: (data) =>
+{ 
+  api.addCardModal(this._handleFormSubmit(data)) 
+  .then((res) => {
+    cardList.addItem(res);
+    this.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    // change button
+  })
+
+
+}});
+
+
+
 addNewCardButton.addEventListener("click", () => {
   addCardModal.open();
 });
@@ -86,17 +108,8 @@ function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data.Name, data.Description);
   profileEditModal.close();
 }
-//api.handleAddCardFormSubmit().then(([cardsData, cardlistEl]) => {
- // console.log(cardsData);
- // console.log(cardlistEl);
- //})
 
-function handleAddCardFormSubmit(cardData) {
-  console.log(cardData);
-  renderCard(cardData, cardlistEl);
-  addCardModal.close();
-  addCardValidator.disableButton();
-}
+
 
 /**Event Listeners */
 
@@ -132,7 +145,6 @@ api.fetchInitialData()
 });
 
 
-};
 
 
 

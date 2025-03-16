@@ -2,10 +2,12 @@ export default class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
     this._link = link;
+    this.id = data.id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
   }
 
+g
   _setEventlisteners() {
     // on the setEventListeners of Card.js
     this._cardElement
