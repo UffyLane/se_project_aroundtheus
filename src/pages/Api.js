@@ -24,7 +24,7 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  addCardModal({data}) {
+  addCardModal(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,

@@ -63,7 +63,7 @@ const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: (data) =>
 { 
-  api.addCardModal(this._handleFormSubmit(data)) 
+  api.addCardModal(data)
   .then((res) => {
     cardList.addItem(res);
     this.close();
