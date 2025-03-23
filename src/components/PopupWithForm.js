@@ -17,6 +17,7 @@ export default class PopupWithForm extends Popup {
 
   _submit(evt) { //this method is to be called when form is submited
     evt.preventDefault();
+    console.log(this);
     this._handleFormSubmit(this._getInputValues()); //call external callback _handleFormSubmit
     this.close();
   }
@@ -24,7 +25,11 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
     //Use 'this._submit' bounded method instead of anonymous function
-    this._popupForm.addEventListener('submit', this._submit);
+    this._popupForm.addEventListener('submit',(evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues()); 
+    this.close();
+    } );
   }
 
   close() {

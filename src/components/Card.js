@@ -1,12 +1,17 @@
 export default class Card {
-  constructor( cardData,  cardSelector, handleImageClick) {
+  constructor( cardData,  cardSelector, handleImageClick, handleTrashIconClick) {
     this._name = cardData.name;
     this._link = cardData.link;
+    this._id = data.id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleTrashIconClick = handleTrashIconClick;
     this._cardData = cardData;
   }
 
+  getId() {
+    return this._id;
+  }
 
   _setEventlisteners() {
     // on the setEventListeners of Card.js
@@ -20,7 +25,7 @@ export default class Card {
     this._cardElement
       .querySelector("#card-trash-button")
       .addEventListener("click", () => {
-        this._handleTrashIcon();
+        this._handleTrashIconClick();
       });
 
     

@@ -27,22 +27,40 @@ export default class Api {
   addCardModal(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link
       })
-
+    })
         .then(res => {
          return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
     })
         .catch((err) => {
           console.error(err);
         })
-      })
+      }
+
+
+      removeCard(CardID) {
+        return fetch(`${this.baseUrl}/cards/${CardID}`, {
+          method: "DELETE",
+          headers: this.headers,
+          body: JSON.stringify({
+            name: data.name,
+            link: data.link
+          })
+        })
+            .then(res => {
+             return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+        })
+            .catch((err) => {
+              console.error(err);
+            })
+          }
 }
 
-}
+      
 
 
 

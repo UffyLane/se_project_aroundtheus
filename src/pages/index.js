@@ -28,8 +28,15 @@ const cardSection = new Section(
   {
     renderer: (data) => {cardSection.addItems(createCard(data))},
   },
-  selectors.cardSection
+  selectors.cardSection,
   
+
+  handleTrashIconClick: () => {
+    const id = card.getId();
+    api.removeCard(id).then(res => {
+      card._handleTrashIcon();
+    })
+  }
 );
 
 const createCard = (data) => {
@@ -37,6 +44,7 @@ const createCard = (data) => {
     cardPreviewPopup.open(data);
   });
   return card.getView();
+
 };
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
@@ -65,7 +73,7 @@ const addCardModal = new PopupWithForm({
 { 
   api.addCardModal(data)
   .then((res) => {
-    cardList.addItem(res);
+    cardSection.addItems(createCard(res));
     this.close();
   })
   .catch((err) => {
