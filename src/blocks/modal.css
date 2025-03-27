@@ -29,6 +29,14 @@
   position: relative;
 }
 
+.delete-card-modal-container {
+width: 430;
+height: 181;
+top: 270px;
+left: 425px;
+border-radius: 10px;
+}
+
 .modal__container_content_image {
   background-color: transparent;
   width: 433px;

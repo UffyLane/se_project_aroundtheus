@@ -29,19 +29,17 @@ const cardSection = new Section(
     renderer: (data) => {cardSection.addItems(createCard(data))},
   },
   selectors.cardSection,
-  
 
-  handleTrashIconClick: () => {
-    const id = card.getId();
-    api.removeCard(id).then(res => {
-      card._handleTrashIcon();
-    })
-  }
 );
 
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
     cardPreviewPopup.open(data);
+  }, (card) => {
+  const id = card.getId();
+    api.removeCard(id).then(res => {
+      card._handleTrashIcon();
+    })
   });
   return card.getView();
 
@@ -102,7 +100,6 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = document.forms["edit-profile-modal__form"];
 const addCardFormElement = document.forms["add-card-modal__form"];
-const cardlistEl = document.querySelector("card-list-id");
 
 const userInfo = new UserInfo({
   profileTitle,
@@ -139,6 +136,12 @@ const profileEditValidator = new FormValidator({
   config: config,
 });
 profileEditValidator.enableValidation();
+
+const _handleLikeIcon = new Card.setEventListeners()
+api.likeCard()
+_handleLikeIcon(); 
+
+api.dislikeCard()
 
 
 

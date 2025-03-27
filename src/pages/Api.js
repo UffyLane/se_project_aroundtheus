@@ -58,6 +58,38 @@ export default class Api {
               console.error(err);
             })
           }
+
+          likeCard(CardID) {
+            return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
+              method: "PUT",
+              headers: this.headers,
+              body: JSON.stringify({
+                avatar
+              })
+            })
+                .then(res => {
+                 return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+            })
+                .catch((err) => {
+                  console.error(err);
+                })
+              }  
+
+              dislikeCard(CardID) {
+                return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
+                  method: "DELETE",
+                  headers: this.headers,
+                  body: JSON.stringify({
+                 avatar
+                  })
+                })
+                    .then(res => {
+                     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+                })
+                    .catch((err) => {
+                      console.error(err);
+                    })
+                  }  
 }
 
       
