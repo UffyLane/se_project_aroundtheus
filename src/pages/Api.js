@@ -90,6 +90,22 @@ export default class Api {
                       console.error(err);
                     })
                   }  
+                
+   editprofileAvatar(){
+  return fetch(`${this.baseUrl}/users/me/avatar`, {
+    method: "PATCH",
+    headers: this.headers,
+    body: JSON.stringify({
+   avatar
+    })
+  })
+      .then(res => {
+       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  })
+      .catch((err) => {
+        console.error(err);
+      })
+}
 }
 
       

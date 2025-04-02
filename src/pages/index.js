@@ -35,15 +35,25 @@ const cardSection = new Section(
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
     cardPreviewPopup.open(data);
-  }, (card) => {
-  const id = card.getId();
-    api.removeCard(id).then(res => {
-      card._handleTrashIcon();
-    })
-  });
-  return card.getView();
+  },
 
-};
+  (card) => {
+    ("click", () => {
+      card.handleDelete.open();
+    
+  },
+  
+       
+  (card) => {
+const id = card.getId();
+api.likeCard(id).then(res => {
+  card.handlelike();
+},
+)})});
+
+  return card.getView();
+}
+
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
@@ -136,14 +146,6 @@ const profileEditValidator = new FormValidator({
   config: config,
 });
 profileEditValidator.enableValidation();
-
-const _handleLikeIcon = new Card.setEventListeners()
-api.likeCard()
-_handleLikeIcon(); 
-
-api.dislikeCard()
-
-
 
 api.fetchInitialData()
 .then(([userData, cardsData]) => {

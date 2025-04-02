@@ -24,6 +24,19 @@
   font-size: 14px;
 }
 
+.avatar__edit-button {
+  background: transparent url(../images/Avatar-Vector.svg) center no-repeat;
+  width: 26px;
+  height: 26px;
+  top: 206px;
+  left: 265px;
+  grid-area: button;
+  border: 1px #ffffff;
+  margin-right: 12px;
+  font-size: 14px;
+  position: fixed;
+}
+
 .profile__edit-button:hover {
   opacity: 60%;
   cursor: pointer;

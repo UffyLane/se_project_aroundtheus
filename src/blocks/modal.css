@@ -156,6 +156,15 @@ border-radius: 10px;
   position: relative;
 }
 
+.delete-card-modal-container{
+  width: 430;
+height: 181;
+top: 270px;
+left: 425px;
+border-radius: 10px;
+
+}
+
 @media screen and (max-width: 630px) {
   .modal__heading {
     width: 100%;

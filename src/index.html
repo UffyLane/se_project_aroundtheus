@@ -18,6 +18,7 @@
         <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="Avatar" class="profile__image" id="profile-image-id">
         <div class="profile__info">
           <h1 class="profile__title" id="profile-title-name">Jacques Cousteau</h1>
+          <button class="avatar__edit-button" id="avatar-edit-button" type="button"></button>
           <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
           <p class="profile__description" id="profile-description-title">Explorer</p>
         </div>
@@ -71,6 +72,24 @@
         </label>
         <button class="modal__button modal__button_disabled" type="submit" disabled>
           Create
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="modal" id="edit-avatar-modal">
+    <div class="modal__container">
+      <button class="modal__close" id="edit-avatar-modal-close-button"></button>
+      <p class="modal__heading">Change profile picture</p>
+      <form name="edit-avatar" class="modal__form" id="edit-avatar-modal__form">
+        <label for="profile-url-input" class="modal__label">
+          <input class="modal__input modal__input_type_url" type="url" id="avatar-url-input" name="link"
+            placeholder="image URL" required>
+          <span class="modal__error" id="avatar-url-input-error"></span>
+        </label>
+        <button class="modal__button modal__button_disabled" type="submit" disabled>
+          Save
         </button>
       </form>
     </div>
