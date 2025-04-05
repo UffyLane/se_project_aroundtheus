@@ -15,10 +15,12 @@
     </header>
     <main class="content">
       <section class="profile page__section">
+        <div class="profile__avatar-container">
         <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="Avatar" class="profile__image" id="profile-image-id">
+        <button class="modal__close" id="edit-avatar-modal-close-button"></button>
+        <div>
         <div class="profile__info">
           <h1 class="profile__title" id="profile-title-name">Jacques Cousteau</h1>
-          <button class="avatar__edit-button" id="avatar-edit-button" type="button"></button>
           <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
           <p class="profile__description" id="profile-description-title">Explorer</p>
         </div>
@@ -79,8 +81,6 @@
 
 
   <div class="modal" id="edit-avatar-modal">
-    <div class="modal__container">
-      <button class="modal__close" id="edit-avatar-modal-close-button"></button>
       <p class="modal__heading">Change profile picture</p>
       <form name="edit-avatar" class="modal__form" id="edit-avatar-modal__form">
         <label for="profile-url-input" class="modal__label">
@@ -91,8 +91,8 @@
         <button class="modal__button modal__button_disabled" type="submit" disabled>
           Save
         </button>
+        <button class="avatar__edit-button" id="avatar-edit-button" type="button"></button>
       </form>
-    </div>
   </div>
 
   <div class="modal" id="preview-image-modal">

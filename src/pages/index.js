@@ -117,6 +117,23 @@ const userInfo = new UserInfo({
 });
 
 
+const avatarModal = new PopupWithForm({
+  popupSelector: "edit-avatar-modal",
+  handleFormSubmit: (inputValues) => {
+    api.avatarModal(inputValues)
+  .then((res) => {
+    
+  })
+  .then(res => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+})
+   .catch((err) => {
+     console.error(err);
+   })
+}})
+
+avatarModal.setEventListeners();
+
 
 /**Event Handlers */
 function handleProfileEditSubmit(data) {
