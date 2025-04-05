@@ -118,7 +118,7 @@ const userInfo = new UserInfo({
 
 
 const avatarModal = new PopupWithForm({
-  popupSelector: "edit-avatar-modal",
+  popupSelector: "#edit-avatar-modal",
   handleFormSubmit: (inputValues) => {
     api.avatarModal(inputValues)
   .then((res) => {
