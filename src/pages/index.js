@@ -119,19 +119,22 @@ const userInfo = new UserInfo({
 
 const avatarModal = new PopupWithForm({
   popupSelector: "#edit-avatar-modal",
-  handleFormSubmit: (inputValues) => {
-    api.avatarModal(inputValues)
-  .then((res) => {
-    
-  })
-  .then(res => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-})
-   .catch((err) => {
-     console.error(err);
-   })
-}})
+  handleFormSubmit: (inputValue) => {
+    api.avatarModal(inputValue)
+    .then(res => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+ })
+     .catch((err) => {
+       console.error(err);
+     })
+}
+});
 
+
+const avatarEditButton = document.querySelector("#edit-avatar-button");
+avatarEditButton.addEventListener("click", () => {
+  avatarModal.open();
+});
 avatarModal.setEventListeners();
 
 

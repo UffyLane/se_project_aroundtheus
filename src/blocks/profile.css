@@ -37,6 +37,7 @@
   background-size: 26px;
   outline: none;
   border-radius: 50%;
+  opacity: 0;
 }
 .profile__edit-button:hover {
   opacity: 60%;
@@ -45,6 +46,7 @@
 
 .avatar__edit-button:hover {
 cursor: pointer;
+opacity: 100%;
 
 
 }
