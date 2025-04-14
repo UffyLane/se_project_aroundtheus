@@ -35,24 +35,47 @@ const cardSection = new Section(
 const createCard = (data) => {
   const card = new Card(data, "#card-template", () => {
     cardPreviewPopup.open(data);
+    handleCardDelete;
   },
 
   (card) => {
     ("click", () => {
       card.handleDelete.open();
     
-  },
+    }),
+  function handleCardDelete(card){
+    confirmDeletePopup.setSubmitFunction(() => {
+      api.
+        deleteCard(card)
+        .then(() => {
+          card._handleTrashIcon();
+        })
+          this.close();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          // change button
+        })
+      
+      
+      }
+})}
   
-       
+    confirmDeletePopup.open();
+    
+    
+  
   (card) => {
 const id = card.getId();
 api.likeCard(id).then(res => {
   card.handlelike();
 },
-)})});
+)};
 
   return card.getView();
-}
+
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
