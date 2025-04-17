@@ -33,23 +33,21 @@ const cardSection = new Section(
 );
 
 const createCard = (data) => {
-  const card = new Card(data, "#card-template", () => {
-    cardPreviewPopup.open(data);
-    handleCardDelete;
-  },
-
-  (card) => {
-    ("click", () => {
+  const card = new Card(
+    data,
+    "#card-template",
+    () => {
+      cardPreviewPopup.open(data);
+    },
+    (card) => {
       card.handleDelete.open();
-    
-    }),
-  function handleCardDelete(card){
-    confirmDeletePopup.setSubmitFunction(() => {
-      api.
-        deleteCard(card)
-        .then(() => {
-          card._handleTrashIcon();
-        })
+    },
+    function handleCardDelete(card) {
+      confirmDeletePopup
+        .setSubmitFunction(() => {
+          api.deleteCard(card).then(() => {
+            card._handleTrashIcon();
+          });
           this.close();
         })
         .catch((err) => {
@@ -57,25 +55,20 @@ const createCard = (data) => {
         })
         .finally(() => {
           // change button
-        })
-      
-      
-      }
-})}
-  
-    confirmDeletePopup.open();
-    
-    
-  
-  (card) => {
-const id = card.getId();
-api.likeCard(id).then(res => {
-  card.handlelike();
-},
-)};
+        });
+    },
+    (card) => {
+      const id = card.getId();
+      api.likeCard(id).then((res) => {
+        card.handlelike();
+      });
+    },
+  );
+
+  // confirmDeletePopup.open();
 
   return card.getView();
-
+};
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
