@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 0, 19px;
+  padding: 0 19px;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
@@ -30,8 +30,8 @@
 }
 
 .delete-card-modal-container {
-width: 430;
-height: 181;
+width: 430px;
+height: 181px;
 top: 270px;
 left: 425px;
 border-radius: 10px;
@@ -154,15 +154,6 @@ border-radius: 10px;
 
 .modal__label {
   position: relative;
-}
-
-.delete-card-modal-container{
-  width: 430;
-height: 181;
-top: 270px;
-left: 425px;
-border-radius: 10px;
-
 }
 
 @media screen and (max-width: 630px) {

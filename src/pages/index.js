@@ -39,23 +39,22 @@ const createCard = (data) => {
     () => {
       cardPreviewPopup.open(data);
     },
-    (card) => {
-      card.handleDelete.open();
-    },
     function handleCardDelete(card) {
-      confirmDeletePopup
-        .setSubmitFunction(() => {
-          api.deleteCard(card).then(() => {
+      confirmDeletePopup.open();
+      confirmDeletePopup.setSubmitAction(() => {
+        api
+          .removeCard(card.getId())
+          .then(() => {
             card._handleTrashIcon();
+            confirmDeletePopup.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            // change button
           });
-          this.close();
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          // change button
-        });
+      });
     },
     (card) => {
       const id = card.getId();
@@ -65,10 +64,9 @@ const createCard = (data) => {
     },
   );
 
-  // confirmDeletePopup.open();
-
   return card.getView();
 };
+
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
@@ -76,6 +74,12 @@ function renderCard(cardData) {
   cardSection.addItems(cardElement);
   
 }
+
+const confirmDeletePopup = new PopupWithFormSubmit({
+  popupSelector: "#delete-card-modal",
+});
+confirmDeletePopup.setEventListeners();
+
     // initialize all my instances
 
     cardPreviewPopup.setEventListeners();

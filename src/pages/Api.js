@@ -46,19 +46,16 @@ export default class Api {
         return fetch(`${this.baseUrl}/cards/${CardID}`, {
           method: "DELETE",
           headers: this.headers,
-          body: JSON.stringify({
-            name: data.name,
-            link: data.link
+        })
+          .then((res) => {
+            return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
           })
-        })
-            .then(res => {
-             return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-        })
-            .catch((err) => {
-              console.error(err);
-            })
-          }
+          .catch((err) => {
+            console.error(err);
+          });
+      }
 
+      
           likeCard(CardID) {
             return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
               method: "PUT",
