@@ -16,4 +16,4 @@ class PopupWithConfirm extends Popup {
           }
         }
         
-        export default PopupWithFormSubmit;
+        export default PopupWithConfirm;

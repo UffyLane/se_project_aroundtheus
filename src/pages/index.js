@@ -9,6 +9,7 @@ import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
 import Api from "../pages/Api";
+import PopupWithConfirm from "../../PopupWithConfirm";
 
 //Create instances of the classes
 
@@ -75,7 +76,7 @@ function renderCard(cardData) {
   
 }
 
-const confirmDeletePopup = new PopupWithFormSubmit({
+const confirmDeletePopup = new PopupWithConfirm({
   popupSelector: "#delete-card-modal",
 });
 confirmDeletePopup.setEventListeners();
