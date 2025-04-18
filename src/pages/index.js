@@ -9,8 +9,7 @@ import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
 import Api from "../pages/Api";
-import PopupWithConfirm from "../../PopupWithConfirm";
-
+import PopupWithConfirm from "../components/PopupWithConfirm";
 //Create instances of the classes
 
 
@@ -43,6 +42,7 @@ const createCard = (data) => {
     function handleCardDelete(card) {
       confirmDeletePopup.open();
       confirmDeletePopup.setSubmitAction(() => {
+        
         api
           .removeCard(card.getId())
           .then(() => {
@@ -67,7 +67,6 @@ const createCard = (data) => {
 
   return card.getView();
 };
-
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
