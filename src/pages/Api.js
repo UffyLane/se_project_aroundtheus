@@ -29,8 +29,8 @@ export default class Api {
     method: "PATCH",
     headers: this.headers,
     body: JSON.stringify({
-      name: "Marie Skłodowska Curie",
-      about: "Physicist and Chemist"
+      name: "Placeholder name",
+      about: "Placeholder about"
     })
   })
       .then(res => {
