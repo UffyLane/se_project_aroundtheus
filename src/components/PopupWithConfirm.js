@@ -14,6 +14,17 @@ class PopupWithConfirm extends Popup {
         
             super.setEventListeners();
           }
+
+          setLoading(isLoading, loadingText = "Saving..."){
+            if(isLoading){
+              // if loading use the loading text
+              this._submitButton.textContent = loadingText    
+            } else {
+              // if not loading use the submitButtonContent
+              this._submitButton.textContent = this._submitButtonContent
+            }
         }
-        
+      }
         export default PopupWithConfirm;
+
+       
