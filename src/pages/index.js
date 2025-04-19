@@ -42,7 +42,7 @@ const createCard = (data) => {
     function handleCardDelete(card) {
       confirmDeletePopup.open();
       confirmDeletePopup.setSubmitAction(() => {
-        
+  
         api
           .removeCard(card.getId())
           .then(() => {
@@ -99,6 +99,7 @@ const addCardModal = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: (data) =>
 { 
+  addCardModal.setLoading(true, "Saving...")
   api.addCardModal(data)
   .then((res) => {
     cardSection.addItems(createCard(res));
@@ -108,7 +109,7 @@ const addCardModal = new PopupWithForm({
     console.log(err);
   })
   .finally(() => {
-    // change button
+    addCardModal.setLoading(false, "Saving...")
   })
 
 
