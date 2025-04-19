@@ -24,6 +24,23 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
+  editprofileInfo(){
+    return fetch(`${this.baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: this.headers,
+    body: JSON.stringify({
+      name: "Marie Skłodowska Curie",
+      about: "Physicist and Chemist"
+    })
+  })
+      .then(res => {
+       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  })
+      .catch((err) => {
+        console.error(err);
+      })
+}
+
   addCardModal(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
@@ -55,7 +72,7 @@ export default class Api {
           });
       }
 
-      
+
           likeCard(CardID) {
             return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
               method: "PUT",
@@ -103,9 +120,5 @@ export default class Api {
         console.error(err);
       })
 }
+
 }
-
-      
-
-
-

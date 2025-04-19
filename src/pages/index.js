@@ -167,7 +167,7 @@ avatarModal.setEventListeners();
 /**Event Handlers */
 function handleProfileEditSubmit(data) {
   profileEditModal.setLoading(true, "Saving...");
-  api.updateUserInfo(data)
+  api.editprofileInfo(data)
     .then(res => {
       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
  })
