@@ -1,6 +1,6 @@
 import Popup from "../components/Popup";
 
-class PopupWithConfirm extends Popup ({constructor,}) {
+class PopupWithConfirm extends Popup {
   constructor({ popupSelector,}) {
     super({ popupSelector});
     this._submitButton = this._popupForm.querySelector(".modal__button");
