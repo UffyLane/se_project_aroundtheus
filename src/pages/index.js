@@ -169,8 +169,12 @@ function handleProfileEditSubmit(data) {
   profileEditModal.setLoading(true, "Saving...");
   api
     .updateUserInfo(data)
-    .then()
-    .catch()
+    .then(res => {
+      return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+ })
+     .catch((err) => {
+       console.error(err);
+     })
     .finally(() => {
       profileEditModal.setLoading(false, "Saving...");
     });
