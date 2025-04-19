@@ -42,7 +42,7 @@ const createCard = (data) => {
     function handleCardDelete(card) {
       confirmDeletePopup.open();
       confirmDeletePopup.setSubmitAction(() => {
-  
+      confirmDeletePopup.setLoading(true, "Saving")
         api
           .removeCard(card.getId())
           .then(() => {
@@ -53,7 +53,7 @@ const createCard = (data) => {
             console.log(err);
           })
           .finally(() => {
-            // change button
+            confirmDeletePopup.setLoading(false, "Saving")
           });
       });
     },
@@ -141,6 +141,7 @@ const userInfo = new UserInfo({
 const avatarModal = new PopupWithForm({
   popupSelector: "#edit-avatar-modal",
   handleFormSubmit: (inputValue) => {
+    avatarModal.setLoading(true, "Saving")
     api.avatarModal(inputValue)
     .then(res => {
       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -148,6 +149,10 @@ const avatarModal = new PopupWithForm({
      .catch((err) => {
        console.error(err);
      })
+     .finally(() => {
+     avatarModal.setLoading(false, "Saving")
+    })
+  
 }
 });
 
@@ -161,8 +166,14 @@ avatarModal.setEventListeners();
 
 /**Event Handlers */
 function handleProfileEditSubmit(data) {
-  userInfo.setUserInfo(data.Name, data.Description);
-  profileEditModal.close();
+  profileEditModal.setLoading(true, "Saving...");
+  api
+    .updateUserInfo(data)
+    .then()
+    .catch()
+    .finally(() => {
+      profileEditModal.setLoading(false, "Saving...");
+    });
 }
 
 
@@ -187,7 +198,6 @@ const profileEditValidator = new FormValidator({
   config: config,
 });
 profileEditValidator.enableValidation();
-
 api.fetchInitialData()
 .then(([userData, cardsData]) => {
   console.log("hey");
@@ -197,13 +207,6 @@ api.fetchInitialData()
 .catch(err => {
   console.error(err);
 });
-
-
-
-
-
-
-
 
 
 
