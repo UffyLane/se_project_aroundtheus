@@ -15,17 +15,19 @@
     </header>
     <main class="content">
       <section class="profile page__section">
-        <img src="c15cb08ab8ecfaba54c6.jpg" alt="Avatar" class="profile__image">
+        <div class="profile__avatar-container">
+        <img src="c15cb08ab8ecfaba54c6.jpg" alt="Avatar" class="profile__image" id="profile-image-id">
+        <button class="avatar__edit-button" id="edit-avatar-button"></button>
+        </div>
         <div class="profile__info">
-          <h1 class="profile__title" id="profile-title-name">jacques Cousteau</h1>
+          <h1 class="profile__title" id="profile-title-name">Jacques Cousteau</h1>
           <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
           <p class="profile__description" id="profile-description-title">Explorer</p>
         </div>
         <button class="profile__add-button"  id="profile-add-button" type="button"></button>
       </section>
       <div class="cards page__section">
-        <ul class="cards__list" id="card-list-id"></ul>
-      </div>
+        <ul class="cards__list" id="card-list-id"></ul></div>
     </main>
     <footer class="footer page__section">
       <p class="footer__copyright">&copy;2024 Around the U.S</p>
@@ -76,11 +78,49 @@
     </div>
   </div>
 
+
+  <div class="modal" id="edit-avatar-modal">
+    <div class="modal__container">
+      <button class="modal__close" id="edit-avatar-modal-close-button"></button>
+      <p class="modal__heading">Change profile picture</p>
+      <form name="edit-avatar" class="modal__form" id="edit-avatar-modal__form">
+        <label for="profile-url-input" class="modal__label">
+          <input class="modal__input modal__input_type_url" type="url" id="avatar-url-input" name="link"
+            placeholder="image URL" required>
+          <span class="modal__error" id="avatar-url-input-error"></span>
+        </label>
+        <button class="modal__button modal__button_disabled" type="submit" disabled>
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+
   <div class="modal" id="preview-image-modal">
     <div class="modal__container modal__container_content_image">
       <button class="modal__close modal__close_button_preview" id="modal-close-button-preview"></button>
       <img src="#" alt="" class="modal__image">
       <p class="modal__caption"></p>
+    </div>
+  </div>
+
+
+  <div class="modal" id="delete-card-modal">
+    <div class="modal__container delete-card-modal-container" id="delete-card-modal-container">
+      <button class="modal__close" id="modal-close-button"></button>
+      <p class="modal__heading">Are you sure?</p>
+      <form
+        name="delete-card"
+        class="modal__form"
+        id="delete-card-modal__form"
+      >
+        <button
+          class="modal__button"
+          type="submit"
+        >
+          Yes
+        </button>
+      </form>
     </div>
   </div>
 
