@@ -24,14 +24,11 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  editprofileInfo(){
+  editprofileInfo(data){
     return fetch(`${this.baseUrl}/users/me`, {
     method: "PATCH",
     headers: this.headers,
-    body: JSON.stringify({
-      name: "Placeholder name",
-      about: "Placeholder about"
-    })
+    body: JSON.stringify(data),
   })
       .then(res => {
        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
