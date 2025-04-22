@@ -102,7 +102,7 @@ export default class Api {
                     })
                   }  
                 
-   editprofileAvatar(){
+   avatarModal(){
   return fetch(`${this.baseUrl}/users/me/avatar`, {
     method: "PATCH",
     headers: this.headers,
