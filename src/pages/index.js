@@ -121,6 +121,7 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const profileAvatar = document.querySelector("#avatar-url-input")
 const profileEditForm = document.forms["edit-profile-modal__form"];
 const addCardFormElement = document.forms["add-card-modal__form"];
 const avatarModalForm = document.forms["edit-avatar-modal__form"];
