@@ -100,7 +100,7 @@ export default class Api {
       });
   }
 
-  avatarModal(avatar) {
+  avatarModal({avatar}) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
