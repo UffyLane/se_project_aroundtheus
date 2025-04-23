@@ -24,19 +24,19 @@ export default class Api {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  editprofileInfo(data){
+  editprofileInfo(data) {
     return fetch(`${this.baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: this.headers,
-    body: JSON.stringify(data),
-  })
-      .then(res => {
-       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  })
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+      })
       .catch((err) => {
         console.error(err);
-      })
-}
+      });
+  }
 
   addCardModal(data) {
     return fetch(`${this.baseUrl}/cards`, {
@@ -44,78 +44,75 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify({
         name: data.name,
-        link: data.link
+        link: data.link,
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-    })
-        .then(res => {
-         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    })
-        .catch((err) => {
-          console.error(err);
-        })
-      }
-
-
-      removeCard(CardID) {
-        return fetch(`${this.baseUrl}/cards/${CardID}`, {
-          method: "DELETE",
-          headers: this.headers,
-        })
-          .then((res) => {
-            return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
-
-
-          likeCard(CardID) {
-            return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
-              method: "PUT",
-              headers: this.headers,
-              body: JSON.stringify({
-                avatar
-              })
-            })
-                .then(res => {
-                 return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-            })
-                .catch((err) => {
-                  console.error(err);
-                })
-              }  
-
-              dislikeCard(CardID) {
-                return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
-                  method: "DELETE",
-                  headers: this.headers,
-                  body: JSON.stringify({
-                 avatar
-                  })
-                })
-                    .then(res => {
-                     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-                })
-                    .catch((err) => {
-                      console.error(err);
-                    })
-                  }  
-                
-   avatarModal(){
-  return fetch(`${this.baseUrl}/users/me/avatar`, {
-    method: "PATCH",
-    headers: this.headers,
-    body: JSON.stringify({
-   avatar
-    })
-  })
-      .then(res => {
-       return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  })
       .catch((err) => {
         console.error(err);
-      })
-}
+      });
+  }
 
+  removeCard(CardID) {
+    return fetch(`${this.baseUrl}/cards/${CardID}`, {
+      method: "DELETE",
+      headers: this.headers,
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  likeCard(CardID) {
+    return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
+      method: "PUT",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  dislikeCard(CardID) {
+    return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
+      method: "DELETE",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  avatarModal(avatar) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
