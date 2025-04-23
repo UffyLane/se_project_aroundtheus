@@ -128,6 +128,7 @@ const avatarModalForm = document.forms["edit-avatar-modal__form"];
 const userInfo = new UserInfo({
   profileTitle,
   profileDescription,
+  profileAvatar,
 });
 
 const avatarModal = new PopupWithForm({
