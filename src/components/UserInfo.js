@@ -9,13 +9,13 @@ export default class UserInfo {
     return {
       profileTitle: this._profileTitle.textContent,
       profileDescription: this._profileDescription.textContent,
-      profileAvatar: this._profileAvatar.textContent,
+      profileAvatar: this._profileAvatar.src,
     };
   }
 
-  setUserInfo(profileTitleInput, profileDescriptionInput, profileAvatarInput) {
-    if (profileTitleInput) this._profileTitle.textContent = profileTitleInput;
-    if (profileDescriptionInput) this._profileDescription.textContent = profileDescriptionInput;
-    if (profileAvatarInput) this._profileAvatar.src = profileAvatarInput;
+  setUserInfo(name, about, avatar) {
+    if (name) this._profileTitle.textContent = name;
+    if (about) this._profileDescription.textContent = about;
+    if (avatar) this._profileAvatar.src = avatar;
   }
 }
