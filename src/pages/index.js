@@ -98,7 +98,9 @@ const addCardModal = new PopupWithForm({
       .addCardModal(data)
       .then((res) => {
         cardSection.addItems(createCard(res));
-        this.close();
+        addCardValidator.disableButton();
+        addCardFormElement.reset();
+        addCardModal.close();
       })
       .catch((err) => {
         console.log(err);
