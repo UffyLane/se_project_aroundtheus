@@ -77,7 +77,7 @@ export default class Api {
       }),
     })
       .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+        return this._checkResponse;
       })
       .catch((err) => {
         console.error(err);
@@ -93,7 +93,7 @@ export default class Api {
       }),
     })
       .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+        return this._checkResponse;
       })
       .catch((err) => {
         console.error(err);
@@ -114,5 +114,9 @@ export default class Api {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 }
