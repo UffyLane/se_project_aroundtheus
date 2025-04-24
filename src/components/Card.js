@@ -1,5 +1,5 @@
 export default class Card {
-  constructor( cardData,  cardSelector, handleImageClick,handleDelete, handleLike) {
+  constructor( cardData,  cardSelector, handleImageClick,handleDelete, handleLike,) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
@@ -7,6 +7,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
   this.handleDelete = handleDelete;
   this.handleLike = handleLike;
+  this._isLiked = cardData.isLiked;
   
   }
 
@@ -55,11 +56,23 @@ export default class Card {
     this._cardCaption = this._cardElement.querySelector("#card-title-id");
     this._cardImage = this._cardElement.querySelector("#card__image-modal");
     this._cardImage.src = this._link;
+    this._cardLikeButton = this._cardElement.querySelector("#card-like-button");
     this._cardImage.alt = this._name;
     this._cardCaption.textContent = this._name;
-    //get the card view
-    //set event listeners
+    this._updateLikesView();
     this._setEventlisteners();
     return this._cardElement;
+  }
+
+  isLiked() {
+    return this._isLiked;
+  }
+
+  _updateLikesView() {
+    if (this.isLiked()) {
+      this._cardLikeButton.classList.add("card__like-button_active");
+    } else {
+      this._cardLikeButton.classList.remove("card__like-button_active");
+    }
   }
 }

@@ -72,9 +72,6 @@ export default class Api {
     return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
       method: "PUT",
       headers: this.headers,
-      body: JSON.stringify({
-        avatar,
-      }),
     })
       .then((res) => {
         return this._checkResponse;
@@ -88,9 +85,6 @@ export default class Api {
     return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
-      body: JSON.stringify({
-        avatar,
-      }),
     })
       .then((res) => {
         return this._checkResponse;
