@@ -166,11 +166,10 @@ border-radius: 10px;
     width: 282px;
     box-sizing: border-box;
     top: 57px;
-    padding: 25px 22px;
+    padding: 5px 22px;
   }
 
   .modal__form {
-    margin-top: 75px;
     display: flex;
     flex-direction: column;
     text-align: left;

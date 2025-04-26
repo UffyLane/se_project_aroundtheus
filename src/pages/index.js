@@ -175,7 +175,7 @@ function handleProfileEditSubmit(data) {
   api
     .editprofileInfo({ name: data.Name, about: data.Description })
     .then((res) => {
-      userInfo.setUserInfo(res.name, res.about);
+      userInfo.setUserInfo(res);
     })
     .catch((err) => {
       console.error(err);
@@ -209,7 +209,7 @@ api
   .fetchInitialData()
   .then(([userData, cardsData]) => {
     console.log("hey");
-    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserInfo(userData);
     cardSection.renderItems(cardsData);
   })
   .catch((err) => {
