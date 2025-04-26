@@ -29,14 +29,9 @@ export default class Api {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify(data),
-    })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._checkResponse)
   }
+  
 
   addCardModal(data) {
     return fetch(`${this.baseUrl}/cards`, {
@@ -47,70 +42,44 @@ export default class Api {
         link: data.link,
       }),
     })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    .then(this._checkResponse)
   }
+      
+  
 
   removeCard(CardID) {
     return fetch(`${this.baseUrl}/cards/${CardID}`, {
       method: "DELETE",
       headers: this.headers,
-    })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+    }).then(this._checkResponse)
+    }
+  
 
   likeCard(CardID) {
     return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
       method: "PUT",
       headers: this.headers,
-    })
-      .then((res) => {
-        return this._checkResponse;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._checkResponse)
   }
+   
+  
 
   dislikeCard(CardID) {
     return fetch(`${this.baseUrl}/cards/${CardID}/likes`, {
       method: "DELETE",
       headers: this.headers,
-    })
-      .then((res) => {
-        return this._checkResponse;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._checkResponse)
   }
+  
 
-  avatarModal({avatar}) {
+  avatarModal({ avatar }) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
         avatar,
       }),
-    })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    }).then(this._checkResponse)
   }
-
-  _checkResponse(res) {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  }
+  
 }

@@ -13,9 +13,9 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(data) {
-    if (data.name) this._profileTitle.textContent = data.name;
-    if (data.about) this._profileDescription.textContent = data.about;
-    if (data.avatar) this._profileAvatar.src = data.avatar;
+  setUserInfo(name, about, avatar) {
+    if (name) this._profileTitle.textContent = name;
+    if (about) this._profileDescription.textContent = about;
+    if (avatar) this._profileAvatar.src = avatar;
   }
 }

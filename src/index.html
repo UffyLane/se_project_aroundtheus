@@ -16,18 +16,20 @@
     <main class="content">
       <section class="profile page__section">
         <div class="profile__avatar-container">
-        <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="Avatar" class="profile__image" id="profile-image-id">
-        <button class="avatar__edit-button" id="edit-avatar-button"></button>
+          <img src="<%=require('./images/jacques-cousteau.jpg')%>" alt="Avatar" class="profile__image"
+            id="profile-image-id">
+          <button class="avatar__edit-button" id="edit-avatar-button"></button>
         </div>
         <div class="profile__info">
           <h1 class="profile__title" id="profile-title-name">Jacques Cousteau</h1>
           <button class="profile__edit-button" id="profile-edit-button" type="button"></button>
           <p class="profile__description" id="profile-description-title">Explorer</p>
         </div>
-        <button class="profile__add-button"  id="profile-add-button" type="button"></button>
+        <button class="profile__add-button" id="profile-add-button" type="button"></button>
       </section>
       <div class="cards page__section">
-        <ul class="cards__list" id="card-list-id"></ul></div>
+        <ul class="cards__list" id="card-list-id"></ul>
+      </div>
     </main>
     <footer class="footer page__section">
       <p class="footer__copyright">&copy;2024 Around the U.S</p>
@@ -89,7 +91,7 @@
             placeholder="image URL" required>
           <span class="modal__error" id="avatar-url-input-error"></span>
         </label>
-        <button class="modal__button modal__button_disabled" type="submit">
+        <button class="modal__button modal__button_disabled" type="submit" disabled>
           Save
         </button>
       </form>
@@ -109,15 +111,8 @@
     <div class="modal__container delete-card-modal-container" id="delete-card-modal-container">
       <button class="modal__close" id="modal-close-button"></button>
       <p class="modal__heading">Are you sure?</p>
-      <form
-        name="delete-card"
-        class="modal__form"
-        id="delete-card-modal__form"
-      >
-        <button
-          class="modal__button"
-          type="submit"
-        >
+      <form name="delete-card" class="modal__form" id="delete-card-modal__form">
+        <button class="modal__button" type="submit">
           Yes
         </button>
       </form>
@@ -129,8 +124,8 @@
       <img src="" alt="" class="card__image" id="card__image-modal">
       <div class="card__description">
         <h2 class="card__title" id="card-title-id"></h2>
-        <button class="card__like-button" id= "card-like-button" type="button"></button>
-        <button class="card__trash-button" id= "card-trash-button" type="button"></button>
+        <button class="card__like-button" id="card-like-button" type="button"></button>
+        <button class="card__trash-button" id="card-trash-button" type="button"></button>
       </div>
     </li>
   </template>

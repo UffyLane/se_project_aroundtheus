@@ -8,7 +8,7 @@ import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
-import Api from "../pages/Api";
+import Api from "../components/Api";
 import PopupWithConfirm from "../components/PopupWithConfirm";
 //Create instances of the classes
 
@@ -56,12 +56,19 @@ const createCard = (data) => {
     },
     (card) => {
       const id = card.getId();
-      api.likeCard(id).then((res) => {
-        card.handlelike();
-      });
-    }
-  );
-
+      if (card.isLiked()) {
+        console.log("disliking");
+        api.dislikeCard(id).then((res) => {
+          card.updateLikesView();
+        });
+      } else {
+        console.log("liking");
+        api.likeCard(id).then((res) => {
+          card.updateLikesView();
+        });
+      }
+    })
+  
   return card.getView();
 };
 
