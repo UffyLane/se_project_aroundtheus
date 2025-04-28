@@ -58,14 +58,10 @@ const createCard = (data) => {
       const id = card.getId();
       if (card.isLiked()) {
         console.log("disliking");
-        api.dislikeCard(id).then((res) => {
-          card.updateLikesView();
-        });
+        api.dislikeCard(id)
       } else {
         console.log("liking");
-        api.likeCard(id).then((res) => {
-          card.updateLikesView();
-        });
+        api.likeCard(id)
       }
     })
   
