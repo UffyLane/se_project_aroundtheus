@@ -61,7 +61,7 @@ const createCard = (data) => {
         api.dislikeCard(id)
       } else {
         console.log("liking");
-        api.likeCard(id)
+        api.likeCard(id).then((res) => {card.updatelikesView();})
       }
     })
   
