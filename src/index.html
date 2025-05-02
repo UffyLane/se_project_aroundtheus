@@ -83,7 +83,7 @@
 
   <div class="modal" id="edit-avatar-modal">
     <div class="modal__container">
-      <button class="modal__close" id="edit-avatar-modal-close-button"></button>
+      <button class="modal__close" id="edit-avatar-modal-close-button" disabled></button>
       <p class="modal__heading">Change profile picture</p>
       <form name="edit-avatar" class="modal__form" id="edit-avatar-modal__form">
         <label for="profile-url-input" class="modal__label">
@@ -91,7 +91,7 @@
             placeholder="image URL" required>
           <span class="modal__error" id="avatar-url-input-error"></span>
         </label>
-        <button class="modal__button modal__button_disabled" type="submit" disabled>
+        <button class="modal__button modal__button_disabled" type="submit">
           Save
         </button>
       </form>

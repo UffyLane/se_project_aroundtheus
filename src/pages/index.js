@@ -146,10 +146,9 @@ const avatarModal = new PopupWithForm({
       .avatarModal(inputValue)
       .then((info) => {
         userInfo.setUserInfo(info);
+        avatarModalValidator(disableButton)
       })
-      // .then((res) => {
-      //   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      // })
+    
       .catch((err) => {
         console.error(err);
       })

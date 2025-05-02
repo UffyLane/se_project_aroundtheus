@@ -11,13 +11,15 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
-    }).then((res) => res.json());
+    }).then((res) => res.json())
+    .then(this._checkResponse) 
   }
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
-    }).then((res) => res.json());
+    }).then((res) => res.json())
+    .then(this._checkResponse)
   }
 
   fetchInitialData() {
@@ -81,7 +83,7 @@ export default class Api {
       }),
     }).then(this._checkResponse)
   }
-  
+
 _checkResponse(res){
   if(res.ok){
     return res.json();
