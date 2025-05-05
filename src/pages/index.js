@@ -61,7 +61,7 @@ const createCard = (data) => {
         api.dislikeCard(id)
       } else {
         console.log("liking");
-        api.likeCard(id).then((res) => {card.updatelikesView();})
+        api.likeCard(id).then((res) => {card._updatelikesView();})
       }
     })
   
@@ -152,6 +152,7 @@ const avatarModal = new PopupWithForm({
       .catch((err) => {
         console.error(err);
       })
+
       .finally(() => {
         avatarModal.setLoading(false, "Saving");
       });
@@ -207,9 +208,10 @@ api
     userInfo.setUserInfo(userData);
     cardSection.renderItems(cardsData);
   })
-  .catch((err) => {
-    console.error(err);
-  });
+ .catch((err) => {
+      console.error(err);
+    })
+   
 
 const avatarModalValidator = new FormValidator({
   formEl: avatarModalForm,
