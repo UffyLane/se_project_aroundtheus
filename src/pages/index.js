@@ -39,7 +39,7 @@ const createCard = (data) => {
     function handleCardDelete(card) {
       confirmDeletePopup.open();
       confirmDeletePopup.setSubmitAction(() => {
-        confirmDeletePopup.setLoading(true, "Saving");
+        confirmDeletePopup.setLoading(true, "Deleting");
         api
           .removeCard(card.getId())
           .then(() => {
@@ -50,8 +50,7 @@ const createCard = (data) => {
             console.log(err);
           })
           .finally(() => {
-            confirmDeletePopup.setLoading(false, "Saving");
-          });
+            confirmDeletePopup.setLoading(false, "Deleting");
       });
     },
     (card) => {
@@ -61,12 +60,12 @@ const createCard = (data) => {
         api.dislikeCard(id)
       } else {
         console.log("liking");
-        api.likeCard(id).then((res) => {card._updatelikesView();})
+        api.likeCard(id).then((res) => {card._updateLikesView();})
       }
+    });
     })
-  
   return card.getView();
-};
+  };
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
@@ -146,9 +145,8 @@ const avatarModal = new PopupWithForm({
       .avatarModal(inputValue)
       .then((info) => {
         userInfo.setUserInfo(info);
-        avatarModalValidator(disableButton)
+        avatarModalValidator.disableButton()
       })
-    
       .catch((err) => {
         console.error(err);
       })
