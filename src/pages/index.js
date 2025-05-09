@@ -38,34 +38,46 @@ const createCard = (data) => {
     },
     function handleCardDelete(card) {
       confirmDeletePopup.open();
-      confirmDeletePopup.setSubmitAction(() => {
-        confirmDeletePopup.setLoading(true, "Deleting");
-        api
-          .removeCard(card.getId())
-          .then(() => {
-            card._handleTrashIcon();
-            confirmDeletePopup.close();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-          .finally(() => {
-            confirmDeletePopup.setLoading(false, "Deleting");
-      });
-    },
-    (card) => {
-      const id = card.getId();
-      if (card.isLiked()) {
-        console.log("disliking");
-        api.dislikeCard(id)
-      } else {
-        console.log("liking");
-        api.likeCard(id).then((res) => {card._updateLikesView();})
-      }
-    });
-    })
+      confirmDeletePopup.setSubmitAction(
+        () => {
+          confirmDeletePopup.setLoading(true, "Deleting");
+          api
+            .removeCard(card.getId())
+            .then(() => {
+              card.handleTrashIcon();
+              confirmDeletePopup.close();
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+            .finally(() => {
+              confirmDeletePopup.setLoading;
+            });
+        },
+        (card) => {
+          const id = card.getId();
+          if (card.isLiked()) {
+            api
+              .dislikeCard(id)
+              .then(() => {
+                card.updateLikesView(); // it's needed for disliking as well
+              })
+              .catch(console.error); // don't forget about catching errors
+          } else {
+            api
+              .likeCard(id)
+              .then(() => {
+                card.updateLikesView();
+              })
+              .catch(console.error); // don't forget about catching errors
+          }
+        }
+      );
+    }
+  );
+
   return card.getView();
-  };
+};
 
 const cardPreviewPopup = new PopupWithImage(selectors.previewImageModal);
 function renderCard(cardData) {
@@ -145,7 +157,7 @@ const avatarModal = new PopupWithForm({
       .avatarModal(inputValue)
       .then((info) => {
         userInfo.setUserInfo(info);
-        avatarModalValidator.disableButton()
+        avatarModalValidator.disableButton();
       })
       .catch((err) => {
         console.error(err);
@@ -206,10 +218,9 @@ api
     userInfo.setUserInfo(userData);
     cardSection.renderItems(cardsData);
   })
- .catch((err) => {
-      console.error(err);
-    })
-   
+  .catch((err) => {
+    console.error(err);
+  });
 
 const avatarModalValidator = new FormValidator({
   formEl: avatarModalForm,
