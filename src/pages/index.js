@@ -38,41 +38,39 @@ const createCard = (data) => {
     },
     function handleCardDelete(card) {
       confirmDeletePopup.open();
-      confirmDeletePopup.setSubmitAction(
-        () => {
-          confirmDeletePopup.setLoading(true, "Deleting");
-          api
-            .removeCard(card.getId())
-            .then(() => {
-              card.handleTrashIcon();
-              confirmDeletePopup.close();
-            })
-            .catch((err) => {
-              console.log(err);
-            })
-            .finally(() => {
-              confirmDeletePopup.setLoading;
-            });
-        },
-        (card) => {
-          const id = card.getId();
-          if (card.isLiked()) {
-            api
-              .dislikeCard(id)
-              .then(() => {
-                card.updateLikesView(); // it's needed for disliking as well
-              })
-              .catch(console.error); // don't forget about catching errors
-          } else {
-            api
-              .likeCard(id)
-              .then(() => {
-                card.updateLikesView();
-              })
-              .catch(console.error); // don't forget about catching errors
-          }
-        }
-      );
+      confirmDeletePopup.setSubmitAction(() => {
+        confirmDeletePopup.setLoading(true, "Deleting");
+        api
+          .removeCard(card.getId())
+          .then(() => {
+            card.handleTrashIcon();
+            confirmDeletePopup.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            confirmDeletePopup.setLoading(false);
+          });
+      });
+    },
+    function handleLike(card) {
+      const id = card.getId();
+      if (card._isLiked()) {
+        api
+          .dislikeCard(id)
+          .then(() => {
+            card.handleLike();
+          })
+          .catch(console.error);
+      } else {
+        api
+          .likeCard(id)
+          .then(() => {
+            card.handleLike();
+          })
+          .catch(console.error);
+      }
     }
   );
 
