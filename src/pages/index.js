@@ -56,18 +56,18 @@ const createCard = (data) => {
     },
     function handleLike(card) {
       const id = card.getId();
-      if (card._isLiked()) {
+      if (card.isLiked()) {
         api
           .dislikeCard(id)
           .then(() => {
-            card.handleLike();
+            card._handleLikeIcon();
           })
           .catch(console.error);
       } else {
         api
           .likeCard(id)
           .then(() => {
-            card.handleLike();
+            card._handleLikeIcon();
           })
           .catch(console.error);
       }
