@@ -60,14 +60,14 @@ const createCard = (data) => {
         api
           .dislikeCard(id)
           .then(() => {
-            card._handleLikeIcon();
+            card.handleLikeIcon();
           })
           .catch(console.error);
       } else {
         api
           .likeCard(id)
           .then(() => {
-            card._handleLikeIcon();
+            card.handleLikeIcon();
           })
           .catch(console.error);
       }
@@ -111,8 +111,8 @@ const addCardModal = new PopupWithForm({
       .then((res) => {
         cardSection.addItems(createCard(res));
         addCardValidator.disableButton();
-        addCardFormElement.reset();
         addCardModal.close();
+        addCardFormElement.reset();
       })
       .catch((err) => {
         console.log(err);
@@ -156,6 +156,7 @@ const avatarModal = new PopupWithForm({
       .then((info) => {
         userInfo.setUserInfo(info);
         avatarModalValidator.disableButton();
+        avatarModal.close();
       })
       .catch((err) => {
         console.error(err);
@@ -180,6 +181,7 @@ function handleProfileEditSubmit(data) {
     .editprofileInfo({ name: data.Name, about: data.Description })
     .then((res) => {
       userInfo.setUserInfo(res);
+      profileEditModal.close();
     })
     .catch((err) => {
       console.error(err);

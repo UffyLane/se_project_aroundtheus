@@ -24,7 +24,7 @@ export default class PopupWithForm extends Popup {
     evt.preventDefault();
     console.log(this);
     this._handleFormSubmit(this._getInputValues()); //call external callback _handleFormSubmit
-    this.close();
+    
   }
 
   setEventListeners() {
