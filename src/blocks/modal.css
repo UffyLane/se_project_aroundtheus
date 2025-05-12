@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 0, 19px;
+  padding: 0 19px;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
@@ -27,6 +27,12 @@
   width: 430px;
   border-radius: 10px;
   position: relative;
+}
+
+.delete-card-modal-container {
+width: 430px;
+height: 181px;
+border-radius: 10px;
 }
 
 .modal__container_content_image {
@@ -160,11 +166,10 @@
     width: 282px;
     box-sizing: border-box;
     top: 57px;
-    padding: 25px 22px;
+    padding: 5px 22px;
   }
 
   .modal__form {
-    margin-top: 75px;
     display: flex;
     flex-direction: column;
     text-align: left;
